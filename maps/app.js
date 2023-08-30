@@ -1,73 +1,51 @@
+const locateBtn = document.querySelector('#locationBtn');
+const placesBtn = document.querySelector('#more');
 
-function initMap() {
+let latC;
+let lonC;
+
+locateBtn.addEventListener('click', function(){
+
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else { 
+    x.innerHTML = "Geolocation is not supported by this browser.";
+  }
+
+
+function showPosition(position) {
+ latC =  parseFloat(position.coords.latitude); 
+ lonC = parseFloat(position.coords.longitude);
+ 
+ console.log(latC, lonC);
+
+
+ initMap(latC, lonC);
+};
+
+
+
+
+function initMap(latC,lonC) {
+ let mapEl = document.querySelector('#map')
+
+mapEl.classList.remove('hide');
+
+
+  console.log(latC, lonC)
     // Create the map.
-    const portland = { lat: 45.5152, lng: -122.676483 };
+    
     const map = new google.maps.Map(document.getElementById("map"), {
-      center: portland,
+      center:{lat: latC, lng: lonC},
       zoom: 12,
       mapId: "8d193001f940fde3",
     });
-    // Create the places service.
-    const service = new google.maps.places.PlacesService(map);
-    let getNextPage;
-    const moreButton = document.getElementById("more");
+
   
-    moreButton.onclick = function () {
-      moreButton.disabled = true;
-      if (getNextPage) {
-        getNextPage();
-      }
-    };
-  
-    // Perform a nearby search.
-    service.nearbySearch(
-      { location: portland, radius: 500, type: "store" },
-      (results, status, pagination) => {
-        if (status !== "OK" || !results) return;
-  
-        addPlaces(results, map);
-        moreButton.disabled = !pagination || !pagination.hasNextPage;
-        if (pagination && pagination.hasNextPage) {
-          getNextPage = () => {
-            // Note: nextPage will call the same handler function as the initial call
-            pagination.nextPage();
-          };
-        }
-      },
-    );
-  }
-  
-  function addPlaces(places, map) {
-    const placesList = document.getElementById("places");
-  
-    for (const place of places) {
-      if (place.geometry && place.geometry.location) {
-        const image = {
-          url: place.icon,
-          size: new google.maps.Size(71, 71),
-          origin: new google.maps.Point(0, 0),
-          anchor: new google.maps.Point(17, 34),
-          scaledSize: new google.maps.Size(25, 25),
-        };
-  
-        new google.maps.Marker({
-          map,
-          icon: image,
-          title: place.name,
-          position: place.geometry.location,
-        });
-  
-        const li = document.createElement("li");
-  
-        li.textContent = place.name;
-        placesList.appendChild(li);
-        li.addEventListener("click", () => {
-          map.setCenter(place.geometry.location);
-        });
-      }
-    }
-  }
-  
+}
+});
+
+
  window.initMap = initMap;
   
     
