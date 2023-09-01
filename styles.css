@@ -8,8 +8,8 @@
 header {
     font-size: 60px;
     font-weight: 60px;
-    color: antiquewhite;
-    background: linear-gradient(to bottom, var(--navyblue), var(--cornflower));
+    color: var(--cornflower);
+    background: linear-gradient(to bottom, var(--babyblue), var(--cornflower));
     padding: 10px;
     text-align: center;
     width: 100%;
@@ -22,7 +22,7 @@ body {
     justify-content: center;
     margin: 0;
     padding: 0;
-    background-color: var(--cornflower);
+    background-color: var(--navyblue);
     color: antiquewhite;
     height: 100vh;
 }
@@ -58,12 +58,30 @@ body {
     margin-top: 20px; 
 }
 
+.Links ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.Links li {
+    margin: 0 15px;
+}
+
 .Links a {
-    font-size: 20px; 
-    
-    color: var(--navyblue);
+    font-size: 20px;
+    color: var(--babyblue);
     text-decoration: none;
-    margin: 0 15px; 
+    background-color: var(--navyblue);
+    padding: 10px;
+    border-radius: 40px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.Links a:hover {
+    background-color: var(--red);
 }
 
 body {
