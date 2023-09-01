@@ -12,6 +12,7 @@ header {
     background: linear-gradient(to bottom, var(--navyblue), var(--cornflower));
     padding: 10px;
     text-align: center;
+    width: 100%;
 }
 
 body {
