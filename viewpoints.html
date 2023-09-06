@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Points of Interest</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap" rel="stylesheet">
+  <style>
+    body, h1, h2, h3, h4, h5, h6, p, a, button, input, textarea {
+      font-family: 'Major Mono Display', monospace;
+    }
+  </style>
+</head>
+<body style="background-color: #DBE8E1;" class="flex flex-col items-center justify-center">
+
+  <!-- Modal might need to be changed based off criteria-->
+  <div id="modal" class="fixed inset-0 flex items-center justify-center z-50">
+    <div style="background-color: #151B25;" class="text-white p-8 rounded-lg shadow-md w-1/2">
+      <h1 class="text-2xl mb-4">Enter your location</h1>
+      <p class="mb-4">Unlock the city's best kept-secrets and attractions.</p>
+      <form id="location-form">
+        <input type="text" id="zipcode" placeholder="Zip Code" class="p-2 mb-4 border rounded text-black">
+        <input type="text" id="city-state" placeholder="City, State" class="p-2 mb-4 border rounded text-black">        
+        <button type="submit" style="background-color: #E10032;" class="p-2 text-white rounded">Submit</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Container for Background Image and Carousels -->
+  <div id="background-container" class="flex flex-col items-center justify-center w-full bg-cover bg-center top-0 h-screen z-10"
+    style="background-image: url('https://windows10spotlight.com/wp-content/uploads/2017/09/6ecabd4f2e54ff0c8956afc003e531e7.jpg');">
+  
+    <!-- Parent Div to hold both Carousels -->
+    <div class="flex justify-center space-x-16 mt-16 z-50">
+      
+      <!-- First Carousel -->
+      <div id="carousel" class="hidden flex flex-col items-center justify-center bg-white rounded-lg shadow-lg p-8 w-3/4 max-w-2xl">
+        <h2 class="text-2xl mb-4">Name to be autofilled for attractions.</h2>
+        <div class="flex flex-row justify-between items-center w-full">
+          <button id="prev" style="background-color: #151B25;" class="text-white p-4 rounded">Prev</button>
+          <div id="point-of-interest" class="w-full p-4">
+            <img id="carousel-image" src="" alt="Point of Interest" class="mx-auto mb-4 w-full h-auto rounded">
+            <p id="image-description" class="text-center mt-4"></p>
+          </div>
+          <button id="next" style="background-color: #151B25;" class="text-white p-4 rounded">Next</button>
+        </div>
+        <a id="directions-button" href="#directions-section" class="mt-4 bg-blue-500 text-white p-4 rounded">Directions</a>
+      </div>
+
+      <!-- Second Carousel -->
+      <div id="carousel2" class="hidden flex flex-col items-center justify-center bg-white rounded-lg shadow-lg p-8 w-3/4 max-w-2xl">
+        <h2 class="text-2xl mb-4">Name to be autofilled for viewpoints.</h2>
+        <div class="flex flex-row justify-between items-center w-full">
+          <button id="prev2" style="background-color: #151B25;" class="text-white p-4 rounded">Prev</button>
+          <div id="point-of-interest2" class="w-full p-4">
+            <img id="carousel-image2" src="" alt="Point of Interest" class="mx-auto mb-4 w-full h-auto rounded">
+            <p id="image-description2" class="text-center mt-4"></p>
+          </div>
+          <button id="next2" style="background-color: #151B25;" class="text-white p-4 rounded">Next</button>
+        </div>
+        <a id="directions-button2" href="#directions-section" class="mt-4 bg-blue-500 text-white p-4 rounded">Directions</a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Directions Section -->
+  <div id="directions-section" class="hidden w-full mt-16 z-30">
+    <h1 class="text-3xl text-center mb-4">Directions</h1>
+    <img src="assets/images/DSC09685-HDR (1).jpg" alt="Placeholder for Google Maps" class="w-full h-auto mb-4 rounded">
+    <p class="text-center">
+      This is where you can include directions from Google Maps. Feel free to replace the placeholder image with whatever you need.
+    </p>
+  </div>
+
+  <script src="viewpoints.js"></script>
+</body>
+</html>
