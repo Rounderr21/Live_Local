@@ -10,19 +10,18 @@ body {
     padding: 0;
     background-color: var(--cornflower);
     color: beige;
-    font-family: 'Major Mono Display', monospace;
 }
 
 header {
     background: linear-gradient(45deg, #034687, #DBE8E1, #034687);
     padding: 20px 0;
     text-align: center;
+    font-family: 'Major Mono Display', monospace;
 }
 
 h1 {
     font-size: 2.5rem;
-    font-family: 'Roboto Mono', monospace;
-    color: white;
+    color: beige;
 }
 
 #sunset {
@@ -36,30 +35,38 @@ h1 {
     text-align: center;
     position: relative;
     z-index: 1;
+    margin: 1em;
 }
 
 #sunset img {
     border: none;
     margin: 0;
     padding: 0;
-    max-width: 100%; /* Ensure the image fits within its container */
+    max-width: 100%;
+    border-radius: 20px;
 }
 
 .description {
     font-size: 20px;
     text-align: center;
     padding: 20px;
-    background-color: rgba(0, 0, 0, 0.7);
+    background: linear-gradient(45deg, purple, rgb(255, 136, 0));
     border-radius: 10px;
     max-width: 800px;
     margin: 0 auto;
-    color: white;
+    color: beige;
+    margin-bottom: 40px;
+}
+
+.description p {
+    margin: 10px;
 }
 
 .Links {
     display: flex;
     justify-content: center;
     margin-top: 20px;
+    white-space: nowrap; /* Prevent wrapping of buttons */ 
 }
 
 .Links ul {
@@ -82,8 +89,6 @@ h1 {
     padding: 10px 20px;
     border-radius: 40px;
     transition: background-color 0.3s ease-in-out;
-    word-break:keep-all;
-    word-wrap: normal;
 }
 
 .Links a:hover {
