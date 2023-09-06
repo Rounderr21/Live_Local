@@ -6,16 +6,52 @@
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap" rel="stylesheet">
   <style>
+    /* Add this to your <head> to apply the font to all text elements */
     body, h1, h2, h3, h4, h5, h6, p, a, button, input, textarea {
       font-family: 'Major Mono Display', monospace;
+    }
+    /* For specific color codes */
+    .bg-cornflowerblue {
+      background-color: #151B25;
+    }
+    .bg-navblue {
+      background-color: #034687;
+    }
+    /* New Styling */
+    .modal-overlay {
+      pointer-events: none;
+    }
+    .modal-content {
+      pointer-events: auto;
     }
   </style>
 </head>
 <body style="background-color: #DBE8E1;" class="flex flex-col items-center justify-center">
+<header class="bg-cornflowerblue text-white w-full py-4">
+  <div class="container mx-auto">
+    <h1 class="text-center text-3xl">View Local</h1>
+    <nav class="flex justify-center mt-4">
+      <ul class="flex justify-center space-x-4">
+        <li class="bg-navblue p-2 mx-2 rounded">
+          <a href="/start_page/start.html" class="text-white w-full h-full block text-center">Start Page</a>
+        </li>
+        <li class="bg-navblue p-2 mx-2 rounded">
+          <a href="home-page.html" class="text-white w-full h-full block text-center">Home</a>
+        </li>
+        <li class="bg-navblue p-2 mx-2 rounded">
+          <a href="localMusic.html" class="text-white w-full h-full block text-center">Local Music</a>
+        </li>
+        <li class="bg-navblue p-2 mx-2 rounded">
+          <a href="food.html" class="text-white w-full h-full block text-center">Local Food</a>
+        </li>
+      </ul>
+    </nav>  
+  </div>
+</header>
 
   <!-- Modal might need to be changed based off criteria-->
-  <div id="modal" class="fixed inset-0 flex items-center justify-center z-50">
-    <div style="background-color: #151B25;" class="text-white p-8 rounded-lg shadow-md w-1/2">
+  <div id="modal" class="modal-overlay fixed inset-0 flex items-center justify-center z-50">
+    <div class="modal-content text-white p-8 rounded-lg shadow-md w-1/2" style="background-color: #151B25;">
       <h1 class="text-2xl mb-4">Enter your location</h1>
       <p class="mb-4">Unlock the city's best kept-secrets and attractions.</p>
       <form id="location-form">
@@ -72,7 +108,8 @@
       This is where you can include directions from Google Maps. Feel free to replace the placeholder image with whatever you need.
     </p>
   </div>
+  
 
-  <script src="viewpoints.js"></script>
+  <script src="Assets/JS/viewpoints.js"></script>
 </body>
 </html>
