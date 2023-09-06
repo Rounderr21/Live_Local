@@ -6,7 +6,7 @@
 }
 
 body {
-    background-image: url(Assets/coast.avif);
+    background-image: url(../Images/coast.avif);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
