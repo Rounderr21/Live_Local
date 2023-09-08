@@ -6,9 +6,12 @@
     <title>Tailwind CSS Example</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Major+Mono+Display&family=Tektur&display=swap');
+        body{
+            font-family: 'Major Mono Display', monospace;
+        }
         /* Styles for the dropdown */
         .dropdown {
-            position: relative;
             display: inline-block;
         }
 
@@ -54,26 +57,26 @@
 </header>
 
 <nav class="flex justify-between p-8">
-    <button style="background-color: #034687; color: #DBE8E1;" id="dropdownDefaultButton" data-dropdown-toggle="dropdown" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">Dropdown button <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
-      </svg></button>
-    <!-- Dropdown menu -->
-    <div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
-        <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
-          <li>
-            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
-          </li>
-          <li>
-            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Settings</a>
-          </li>
-          <li>
-            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Earnings</a>
-          </li>
-          <li>
-            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Sign out</a>
-          </li>
-        </ul>
-    </div>
+   
+    <div class="relative inline-block text-left">
+        <button style="background-color: #034687;" type="button" class="inline-flex justify-center w-full px-4 py-2 text-sm font-medium text-white-700 border border-gray-300 rounded-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500" id="dropdownButton" aria-haspopup="true" aria-expanded="true">
+          Open Menu
+          <!-- Heroicon name: solid/chevron-down -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 ml-2 -mr-1" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path fill-rule="evenodd" d="M10 3a.75.75 0 01.53.22l4.25 4.25a.75.75 0 11-1.06 1.06L10 4.81 6.28 8.53a.75.75 0 11-1.06-1.06l4.25-4.25a.75.75 0 01.53-.22z" clip-rule="evenodd" />
+          </svg>
+        </button>
+      
+        <!-- Dropdown panel, hidden by default -->
+        <div class="origin-top-right absolute right-0 mt-2 w-32 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5" id="dropdownPanel">
+          <div class="py-1" role="menu" aria-orientation="vertical" aria-labelledby="dropdownButton" id="dropdownItems">
+            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-500 hover:text-white" role="menuitem">Item 1</a>
+            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-500 hover:text-white" role="menuitem">Item 2</a>
+            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-500 hover:text-white" role="menuitem">Item 3</a>
+          </div>
+        </div>
+      </div>
+
 
     <button class="menu-button mr-10" onclick="updatePlaceholder('Hip hop')" style="color: #DBE8E1;">Hip hop</button>
     <button class="menu-button mr-10" onclick="updatePlaceholder('RNB')" style="color: #DBE8E1;">RNB</button>
@@ -85,11 +88,11 @@
     <main class="w-full max-w-md  p-8 rounded shadow" style="background-color: #034687;">
         <section>
             <form action="" class="space-y-4" onsubmit="return showArtistCards();">
-                <h2 class="text-2xl font-semibold text-gray-800" style="color: #151B25;">Find The Best local Music!</h2>
+                <h2 class="text-2xl font-semibold text-gray-800" style="color: #151B25;">Try New Music!</h2>
                 <section class="w-full">
                     <input style=" background-color: #DBE8E1" type="text" id="searchInput" name="name" class="mt-1 p-2 w-full border rounded" placeholder="Type your favorite song here!">
                 </section>
-                <button id="searchButton" style="background-color: #151B25; color: #DBE8E1;" type="submit" class="w-full bg-blue-500 hover:bg-blue-600 py-2 rounded" style="color: #151B25;">
+                <button value="redquest Authorization" onclick="requestAuorization()" id="searchButton" style="background-color: #151B25; color: #DBE8E1;" type="submit" class="w-full bg-blue-500 hover:bg-blue-600 py-2 rounded" style="color: #151B25;">
                     Submit
                 </button>
             </form>
@@ -101,6 +104,7 @@
 <div class="flex justify-center space-x-4">
     <div class="max-w-md bg-white rounded overflow-hidden shadow-lg artist1 hidden" id="artist1">
         <div class="max-w-md mx-auto rounded overflow-hidden shadow-lg" style="background-color: #034687; color: #DBE8E1;">
+            <!-- Replace the SoundCloud URL and parameters below -->
             <!-- <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay"
             src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/293&amp;{ ADD YOUR PARAMETERS HERE }">
           </iframe> -->
@@ -120,51 +124,49 @@
 </div>
 
 
-
-
-    <div class="flex justify-center space-x-4">
-        <div class="max-w-md bg-white rounded overflow-hidden shadow-lg artist2 hidden" id="artist2">
-            <div class="max-w-md mx-auto rounded overflow-hidden shadow-lg" style="background-color: #034687; color: #DBE8E1;">  
-                <!-- <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay"
-                src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/293&amp;{ ADD YOUR PARAMETERS HERE }">
-              </iframe> -->
-              <div id="resultsContainer" class="flex justify-center space-x-4"></div>
-            <div class="px-6 py-4">
-                <div  class="font-bold text-xl mb-2">Artist 2</div>
-                <p style="color: #DBE8E1;" class="text-gray-700 text-base">
-                    Lorem ipsum dolor sit amet. In culpa voluptas et quae dolorem aut aliquam enim eum aliquid doloremque et ipsum optio et consequatur eveniet sit libero modi! Et exercitationem architecto est harum optio quo voluptas eligendi ex blanditiis aspernatur.
-                </p>
-            </div>
-            <div class="px-6 py-4">
-                <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">Food</span>
-                <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">Bars</span>
-                <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700">Events</span>
-            </div>
+<div class="flex justify-center space-x-4">
+    <div class="max-w-md bg-white rounded overflow-hidden shadow-lg artist2 hidden" id="artist2">
+        <div class="max-w-md mx-auto rounded overflow-hidden shadow-lg" style="background-color: #034687; color: #DBE8E1;">  
+            <!-- Replace the SoundCloud URL and parameters below -->
+            <!-- <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay"
+            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/293&amp;{ ADD YOUR PARAMETERS HERE }">
+          </iframe> -->
+          <div id="resultsContainer" class="flex justify-center space-x-4"></div>
+        <div class="px-6 py-4">
+            <div  class="font-bold text-xl mb-2">Artist 2</div>
+            <p style="color: #DBE8E1;" class="text-gray-700 text-base">
+                Lorem ipsum dolor sit amet. In culpa voluptas et quae dolorem aut aliquam enim eum aliquid doloremque et ipsum optio et consequatur eveniet sit libero modi! Et exercitationem architecto est harum optio quo voluptas eligendi ex blanditiis aspernatur.
+            </p>
+        </div>
+        <div class="px-6 py-4">
+            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">Food</span>
+            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">Bars</span>
+            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700">Events</span>
         </div>
     </div>
+</div>
 
-    <div class="flex justify-center space-x-4">
-        <div class="max-w-md bg-white rounded overflow-hidden shadow-lg artist3 hidden" id="artist3">
-            <div class="max-w-md mx-auto rounded overflow-hidden shadow-lg" style="background-color: #034687; color: #DBE8E1;">
-                <!-- <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay"
-                src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/293&amp;{ ADD YOUR PARAMETERS HERE }">
-              </iframe> -->
-              <div id="resultsContainer" class="flex justify-center space-x-4"></div>
-            <div class="px-6 py-4">
-                <div class="font-bold text-xl mb-2">Artist 3</div>
-                <p style="color: #DBE8E1;" class="text-gray-700 text-base">
-                    Lorem ipsum dolor sit amet. In culpa voluptas et quae dolorem aut aliquam enim eum aliquid doloremque et ipsum optio et consequatur eveniet sit libero modi! Et exercitationem architecto est harum optio quo voluptas eligendi ex blanditiis aspernatur.
-                </p>
-            </div>
-            <div class="px-6 py-4">
-                <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">Food</span>
-                <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">Bars</span>
-                <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700">Events</span>
-            </div>
+<div class="flex justify-center space-x-4">
+    <div class="max-w-md bg-white rounded overflow-hidden shadow-lg artist3 hidden" id="artist3">
+        <div class="max-w-md mx-auto rounded overflow-hidden shadow-lg" style="background-color: #034687; color: #DBE8E1;">
+            <!-- Replace the SoundCloud URL and parameters below -->
+            <!-- <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay"
+            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/293&amp;{ ADD YOUR PARAMETERS HERE }">
+          </iframe> -->
+          <div id="resultsContainer" class="flex justify-center space-x-4"></div>
+        <div class="px-6 py-4">
+            <div class="font-bold text-xl mb-2">Artist 3</div>
+            <p style="color: #DBE8E1;" class="text-gray-700 text-base">
+                Lorem ipsum dolor sit amet. In culpa voluptas et quae dolorem aut aliquam enim eum aliquid doloremque et ipsum optio et consequatur eveniet sit libero modi! Et exercitationem architecto est harum optio quo voluptas eligendi ex blanditiis aspernatur.
+            </p>
+        </div>
+        <div class="px-6 py-4">
+            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">Food</span>
+            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">Bars</span>
+            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700">Events</span>
         </div>
     </div>
-
-
+</div>
 
 <script>
     function toggleDropdown() {
@@ -191,79 +193,20 @@
         return false;
     }
 
-    // Close the dropdown if the user clicks outside of it
-    window.onclick = function(event) {
-        if (!event.target.matches('.dropbtn')) {
-            var dropdowns = document.getElementsByClassName("dropdown-content");
-            for (var i = 0; i < dropdowns.length; i++) {
-                var openDropdown = dropdowns[i];
-                if (!openDropdown.classList.contains('hidden')) {
-                    openDropdown.classList.add('hidden');
-                }
-            }
-        }
-    }
-
-    function updatePlaceholder(genre) {
-        var inputField = document.getElementById("name");
-        inputField.placeholder = "Type Your Favorite " + ""+genre +""+" Song!";
-    }
-
-    const clientId = 'YOUR_CLIENT_ID';
-const searchInput = document.getElementById('searchInput');
-const searchButton = document.getElementById('searchButton');
-const resultsContainer = document.getElementById('resultsContainer');
-
-searchButton.addEventListener('click', performSearch);
-
-function performSearch() {
-  const searchTerm = searchInput.value.trim();
-  if (searchTerm === '') return;
-
-  // Construct the SoundCloud API search URL
-  const apiUrl = `https://api.soundcloud.com/tracks?q=${searchTerm}&client_id=${clientId}`;
-
-  fetch(apiUrl)
-    .then(response => response.json())
-    .then(data => displayResults(data))
-    .catch(error => console.error('Error fetching data:', error));
-}
-
-function displayResults(results) {
-  resultsContainer.innerHTML = '';
-
-  results.forEach(result => {
-    const resultCard = document.createElement('div');
-    resultCard.classList.add('max-w-md', 'bg-white', 'rounded', 'overflow-hidden', 'shadow-lg', 'artist3');
-    resultCard.innerHTML = `
-      <div class="max-w-md mx-auto rounded overflow-hidden shadow-lg" style="background-color: #034687; color: #DBE8E1;">
-        <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=${result.uri}">
-        </iframe>
-        <div class="px-6 py-4">
-          <div class="font-bold text-xl mb-2">${result.title}</div>
-          <p style="color: #DBE8E1;" class="text-gray-700 text-base">
-            ${result.user.username}
-          </p>
-        </div>
-        <div class="px-6 py-4">
-          <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">Food</span>
-          <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">Bars</span>
-          <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700">Events</span>
-        </div>
-      </div>
-    `;
-    resultsContainer.appendChild(resultCard);
+    const dropdownButton = document.getElementById('dropdownButton');
+  const dropdownPanel = document.getElementById('dropdownPanel');
+  
+  dropdownButton.addEventListener('click', () => {
+    dropdownPanel.classList.toggle('hidden');
   });
-}
 
-
-
-
-
-
-
+  // Close the dropdown if a click occurs outside of it
+  document.addEventListener('click', (event) => {
+    if (!dropdownButton.contains(event.target) && !dropdownPanel.contains(event.target)) {
+      dropdownPanel.classList.add('hidden');
+    }
+  });
 </script>
-
 </body>
-
 </html>
+
