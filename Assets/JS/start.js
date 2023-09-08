@@ -22,3 +22,8 @@ function showPosition(position) {
  
  console.log(latC, lonC);
 };
+
+const latitude = latC;
+const longitude = lonC;
+
+module.exports = latitude, longitude;
