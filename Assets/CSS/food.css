@@ -22,7 +22,7 @@ header{
 }
 
 .dropbtn {
-    background-color: #3498DB;
+    background-color: var(--red);
     color: white;
     padding: 16px;
     font-size: 45px;
@@ -32,7 +32,8 @@ header{
   }
   
   .dropbtn:hover, .dropbtn:focus {
-    background-color: #2980B9;
+    background-color: var(--babyblue);
+    color: var(--cornflower);
   }
   
   .dropdown {

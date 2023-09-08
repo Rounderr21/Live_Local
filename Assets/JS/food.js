@@ -3,6 +3,10 @@
 let listContainer = document.getElementById('Image');
 let foodButton = document.getElementById('button');
 
+// main.js
+const importedData = require('../JS/start.js');
+
+console.log(importedData); // This will log 'Some data to export'
 
 
 function clickButton(){
