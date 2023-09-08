@@ -9,8 +9,8 @@ locateBtn.addEventListener('click', function() {
       lonC = parseFloat(position.coords.longitude);
       console.log(latC, lonC);
       
-      localStorage.setItem('latitude', latC);
-      localStorage.setItem('longitude', lonC);
+      JSON.stringify(localStorage.setItem('latitude', latC));
+      JSON.stringify(localStorage.setItem('longitude', lonC));
       // Now that you have the location, you can redirect to the next page.
       window.location.href = "home-page.html";
     });
