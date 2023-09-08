@@ -8,6 +8,9 @@ locateBtn.addEventListener('click', function() {
       latC = parseFloat(position.coords.latitude);
       lonC = parseFloat(position.coords.longitude);
       console.log(latC, lonC);
+      
+      JSON.stringify(localStorage.setItem('latitude', latC));
+      JSON.stringify(localStorage.setItem('longitude', lonC));
       // Now that you have the location, you can redirect to the next page.
       window.location.href = "home-page.html";
     });
@@ -16,7 +19,3 @@ locateBtn.addEventListener('click', function() {
     alert("Geolocation is not supported by this browser.");
   }
 });
-const latitude = latC;
-const longitude = lonC;
-
-module.exports = latitude, longitude;

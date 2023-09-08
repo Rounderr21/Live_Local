@@ -13,22 +13,27 @@ body {
 }
 
 header {
+    justify-content: space-between;
     background: linear-gradient(45deg, #034687, #DBE8E1, #034687);
     padding: 20px 0;
     text-align: center;
     font-family: 'Major Mono Display', monospace;
 }
 
+#head{
+    font-size: 75px;
+}
+
 h1 {
     font-size: 2.5rem;
-    color: beige;
+    color: var(--cornflower);
 }
 
 #sunset {
     background-image: url('./Assets/Images/005_13903383413_o.jpg');
     background-size: cover;
     background-position: center;
-    height: 400px;
+    height: 600px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -67,6 +72,7 @@ h1 {
     justify-content: center;
     margin-top: 20px;
     white-space: nowrap; /* Prevent wrapping of buttons */ 
+    height: 100px;
 }
 
 .Links ul {
