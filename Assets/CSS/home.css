@@ -17,6 +17,7 @@ header {
     padding: 20px 0;
     text-align: center;
     font-family: 'Major Mono Display', monospace;
+    height: 200px;
 }
 
 h1 {
@@ -28,7 +29,7 @@ h1 {
     background-image: url('./Assets/Images/005_13903383413_o.jpg');
     background-size: cover;
     background-position: center;
-    height: 400px;
+    height: 600px;
     display: flex;
     align-items: center;
     justify-content: center;
