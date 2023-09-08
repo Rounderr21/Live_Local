@@ -3,10 +3,12 @@
 let listContainer = document.getElementById('Image');
 let foodButton = document.getElementById('button');
 
-// main.js
-const importedData = require('../JS/start.js');
+// Retrieve values from local storage
+const latitude = localStorage.getItem('latitude');
+const longitude = localStorage.getItem('longitude');
 
-console.log(importedData); // This will log 'Some data to export'
+// Now you can use latitude and longitude in your script
+console.log(latitude, longitude);
 
 
 function clickButton(){
