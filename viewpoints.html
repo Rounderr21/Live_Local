@@ -1,30 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Points of Interest</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap" rel="stylesheet">
-  <style>
-    
-    body, h1, h2, h3, h4, h5, h6, p, a, button, input, textarea {
-      font-family: 'Major Mono Display', monospace;
-    }
-    /* For specific color codes */
-    .bg-cornflowerblue {
-      background-color: #151B25;
-    }
-    .bg-navblue {
-      background-color: #034687;
-    }
-    
-    .modal-overlay {
-      pointer-events: none;
-    }
-    .modal-content {
-      pointer-events: auto;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <title>Points of Interest</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap" rel="stylesheet">
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAsemLDXsz12-nW4Kalj3zkkjxEZLmcLB8&libraries=places&callback=initMap" async defer></script>
+
+
+    <style>
+        body, h1, h2, h3, h4, h5, h6, p, a, button, input, textarea {
+            font-family: 'Major Mono Display', monospace;
+        }ß
+
+        .bg-cornflowerblue {
+            background-color: #151B25;
+        }
+
+        .bg-navblue {
+            background-color: #034687;
+        }
+
+        .modal-overlay {
+            pointer-events: none;
+        }
+
+        .modal-content {
+            pointer-events: auto;
+        }
+    </style>
 </head>
 <body style="background-color: #DBE8E1;" class="flex flex-col items-center justify-center">
 <header class="bg-cornflowerblue text-white w-full py-4">
@@ -103,7 +107,9 @@
   <!-- Directions Section -->
   <div id="directions-section" class="hidden w-full mt-16 z-30">
     <h1 class="text-3xl text-center mb-4">Directions</h1>
-    <img src="assets/images/DSC09685-HDR (1).jpg" alt="Placeholder for Google Maps" class="w-full h-auto mb-4 rounded">
+    <div id="map" style="width: 100%; height: 400px;"></div>
+
+
     <p class="text-center">
       This is where you can include directions from Google Maps. Feel free to replace the placeholder image with whatever you need.
     </p>

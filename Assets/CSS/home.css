@@ -13,6 +13,7 @@ body {
 }
 
 header {
+    justify-content: space-between;
     background: linear-gradient(45deg, #034687, #DBE8E1, #034687);
     padding: 20px 0;
     text-align: center;
@@ -20,9 +21,13 @@ header {
     height: 200px;
 }
 
+#head{
+    font-size: 75px;
+}
+
 h1 {
     font-size: 2.5rem;
-    color: beige;
+    color: var(--cornflower);
 }
 
 #sunset {
@@ -68,6 +73,7 @@ h1 {
     justify-content: center;
     margin-top: 20px;
     white-space: nowrap; /* Prevent wrapping of buttons */ 
+    height: 100px;
 }
 
 .Links ul {

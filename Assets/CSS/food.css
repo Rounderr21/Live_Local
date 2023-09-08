@@ -5,11 +5,6 @@
     --red: #E10032;
 }
 
-*{
-    background-color:var(--babyblue);
-}
-
-
 header{
     
     font-family: 'Major Mono Display', monospace;
@@ -22,7 +17,7 @@ header{
 }
 
 .dropbtn {
-    background-color: #3498DB;
+    background-color: var(--red);
     color: white;
     padding: 16px;
     font-size: 45px;
@@ -32,7 +27,8 @@ header{
   }
   
   .dropbtn:hover, .dropbtn:focus {
-    background-color: #2980B9;
+    background-color: var(--babyblue);
+    color: var(--cornflower);
   }
   
   .dropdown {
@@ -67,6 +63,7 @@ header{
 section{
     display: flex;
     align-items: center;
+    background-color: var(--babyblue);
 }
 
 #groupGathering{
@@ -95,6 +92,9 @@ p{
 
 
 }
+aside{
+    background-color: var(--babyblue);
+}
 
 #button {
     width: 250px;
@@ -114,17 +114,12 @@ button:active{
       
 }
 
-/*
-#locationBtn{
-    background-color: white;
-}
-
 #map {
+    display: none;
     height: 700px;
     width: 100%;
-    display: none;
 }
-*/
+
 
 footer{
     font-family: 'Major Mono Display', monospace;
