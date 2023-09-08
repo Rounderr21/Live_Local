@@ -1,0 +1,141 @@
+:root{
+    --cornflower: #151B25;
+    --navyblue: #034687;
+    --babyblue: #DBE8E1;
+    --red: #E10032;
+}
+
+*{
+    background-color:var(--babyblue);
+}
+
+
+header{
+    
+    font-family: 'Major Mono Display', monospace;
+    background: linear-gradient(45deg, #034687,#DBE8E1,#034687);
+    color: var(--cornflower);
+    width: 100%;
+    height: 500px;
+    font-size: 100px;
+    text-align: center;
+}
+
+.dropbtn {
+    background-color: #3498DB;
+    color: white;
+    padding: 16px;
+    font-size: 45px;
+    border: none;
+    cursor: pointer;
+    width: 250px;
+  }
+  
+  .dropbtn:hover, .dropbtn:focus {
+    background-color: #2980B9;
+  }
+  
+  .dropdown {
+    position: relative;
+    display: block;
+    width: 250px;
+    height: 0px;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: var(--babyblue);
+    min-width: 160px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  .dropdown-content a {
+    color: var(--cornflower);
+    font-size: 30px;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .dropdown a:hover {background-color: var(--red);}
+  
+  .show {display: block;}
+
+section{
+    display: flex;
+    align-items: center;
+}
+
+#groupGathering{
+    display: flex;
+    justify-content: space-between;
+}
+img{
+
+    width: 1162px;
+
+    
+}
+p{
+    word-wrap: break-word;
+    color: var(--cornflower);
+    width: 100%;
+    height: 500px;
+    font-size: 25px;
+    text-align: center;
+    
+}
+#listLocalEats{
+   display: flex;
+   justify-content: space-evenly;
+
+
+
+}
+
+#button {
+    width: 250px;
+    height: 150px;
+    font-size: 25px;
+    background-color: #E10032;
+    margin-top: 150px;
+
+    position: relative;
+
+}
+
+button:active{
+        background-color: red;
+        text-decoration: none;
+        transform: scale(0.95);
+      
+}
+
+/*
+#locationBtn{
+    background-color: white;
+}
+
+#map {
+    height: 700px;
+    width: 100%;
+    display: none;
+}
+*/
+
+footer{
+    font-family: 'Major Mono Display', monospace;
+    display: flex;
+    font-size: 25px;
+    width: 100%;
+    height: 100px;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--navyblue);
+    color: var(--cornflower);
+    background: linear-gradient(to right, #DBE8E1,#034687,#DBE8E1);
+
+}

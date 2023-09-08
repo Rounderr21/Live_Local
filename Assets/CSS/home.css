@@ -1,0 +1,104 @@
+:root {
+    --cornflower: #151B25;
+    --navyblue: #034687;
+    --babyblue: #DBE8E1;
+    --red: #E10032;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--cornflower);
+    color: beige;
+}
+
+header {
+    background: linear-gradient(45deg, #034687, #DBE8E1, #034687);
+    padding: 20px 0;
+    text-align: center;
+    font-family: 'Major Mono Display', monospace;
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: beige;
+}
+
+#sunset {
+    background-image: url('./Assets/Images/005_13903383413_o.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    margin: 1em;
+}
+
+#sunset img {
+    border: none;
+    margin: 0;
+    padding: 0;
+    max-width: 100%;
+    border-radius: 20px;
+}
+
+.description {
+    font-size: 20px;
+    text-align: center;
+    padding: 20px;
+    background: linear-gradient(45deg, purple, rgb(255, 136, 0));
+    border-radius: 10px;
+    max-width: 800px;
+    margin: 0 auto;
+    color: beige;
+    margin-bottom: 40px;
+}
+
+.description p {
+    margin: 10px;
+}
+
+.Links {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    white-space: nowrap; /* Prevent wrapping of buttons */ 
+}
+
+.Links ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.Links li {
+    margin: 0 15px;
+}
+
+.Links a {
+    font-size: 20px;
+    color: var(--babyblue);
+    text-decoration: none;
+    background-color: var(--navyblue);
+    padding: 10px 20px;
+    border-radius: 40px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.Links a:hover {
+    background-color: var(--red);
+}
+
+footer {
+    text-align: center;
+    padding: 30px 0;
+    background: linear-gradient(to right, #DBE8E1, #034687, #DBE8E1);
+    color: var(--navyblue);
+    font-size: 14px;
+}
