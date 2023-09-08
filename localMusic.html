@@ -3,12 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tailwind CSS Example</title>
+    <title>Find New Music</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Major+Mono+Display&family=Tektur&display=swap');
         body{
             font-family: 'Major Mono Display', monospace;
+            background-color: lightgray;
         }
         /* Styles for the dropdown */
         .dropdown {
@@ -20,12 +22,12 @@
             position: absolute;
             top: 100%;
             left: 0;
-            background-color: #f9f9f9;
+            background-color: #6e13af;
             min-width: 160px;
             box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
             z-index: 1;
         }
-
+        /* WRONGLY NAMED NOT DROPDOWN CONTENT KEEP KEEP*/
         .dropdown:hover .dropdown-content {
             display: block;
         }
@@ -45,7 +47,17 @@
         }
 
         .menu-button:hover {
-            background-color: #1D4ED8;
+            background-color: rgb(55, 101, 228);
+        }
+
+        #dropdownItems a {
+          opacity: 0;
+         transition: opacity 0.5s; /* Control the transition duration here */
+        }
+
+/* Add a class to trigger the transition */
+        #dropdownItems.open a {
+            opacity: 1;
         }
     </style>
 </head>
@@ -59,23 +71,23 @@
 <nav class="flex justify-between p-8">
    
     <div class="relative inline-block text-left">
-        <button style="background-color: #034687;" type="button" class="inline-flex justify-center w-full px-4 py-2 text-sm font-medium text-white-700 border border-gray-300 rounded-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500" id="dropdownButton" aria-haspopup="true" aria-expanded="true">
-          Open Menu
-          <!-- Heroicon name: solid/chevron-down -->
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 ml-2 -mr-1" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-            <path fill-rule="evenodd" d="M10 3a.75.75 0 01.53.22l4.25 4.25a.75.75 0 11-1.06 1.06L10 4.81 6.28 8.53a.75.75 0 11-1.06-1.06l4.25-4.25a.75.75 0 01.53-.22z" clip-rule="evenodd" />
-          </svg>
+        <button style="background-color: #034687; color: white;" type="button" class="inline-flex justify-center w-full px-4 py-2 text-2xl font-medium text-white-700 border border-gray-300 rounded-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500" id="dropdownButton" aria-haspopup="true" aria-expanded="true">
+            Start Page
+            <!-- Heroicon name: solid/chevron-down -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 ml-2 -mr-1" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M10 3a.75.75 0 01.53.22l4.25 4.25a.75.75 0 11-1.06 1.06L10 4.81 6.28 8.53a.75.75 0 11-1.06-1.06l4.25-4.25a.75.75 0 01.53-.22z" clip-rule="evenodd" />
+            </svg>
         </button>
-      
+    
         <!-- Dropdown panel, hidden by default -->
-        <div class="origin-top-right absolute right-0 mt-2 w-32 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5" id="dropdownPanel">
-          <div class="py-1" role="menu" aria-orientation="vertical" aria-labelledby="dropdownButton" id="dropdownItems">
-            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-500 hover:text-white" role="menuitem">Item 1</a>
-            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-500 hover:text-white" role="menuitem">Item 2</a>
-            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-500 hover:text-white" role="menuitem">Item 3</a>
-          </div>
+        <div class="origin-top-right absolute right-0 mt-2 w-full rounded-md shadow-lg bg-blue-900 ring-1 ring-black ring-opacity-5 hidden" id="dropdownPanel">
+            <div class="py-1" role="menu" aria-orientation="vertical" aria-labelledby="dropdownButton" >
+                <a href="#"  id="dropdownItems" class="block bg-blue-900 px-4 py-2 text-1xL text-white-700 hover:bg-blue-800 hover:text-white" role="menuitem">Home page</a>
+                <a href="#" id="dropdownItems" class="block px-4 py-2 text-1xL text-white-700 hover:bg-blue-800 hover:text-white" role="menuitem">Food</a>
+                <a href="#" id="dropdownItems" class="block px-4 py-2 text-1xL text-white-700 hover:bg-blue-800 hover:text-white" role="menuitem">Viewpoints</a>
+            </div>
         </div>
-      </div>
+    </div>
 
 
     <button class="menu-button mr-10" onclick="updatePlaceholder('Hip hop')" style="color: #DBE8E1;">Hip hop</button>
@@ -92,7 +104,7 @@
                 <section class="w-full">
                     <input style=" background-color: #DBE8E1" type="text" id="searchInput" name="name" class="mt-1 p-2 w-full border rounded" placeholder="Type your favorite song here!">
                 </section>
-                <button value="redquest Authorization" onclick="requestAuorization()" id="searchButton" style="background-color: #151B25; color: #DBE8E1;" type="submit" class="w-full bg-blue-500 hover:bg-blue-600 py-2 rounded" style="color: #151B25;">
+                <button id="searchButton" style="background-color: #151B25; color: #DBE8E1;" type="submit" class="w-full bg-blue-500 hover:bg-blue-600 py-2 rounded" style="color: #151B25;">
                     Submit
                 </button>
             </form>
@@ -115,10 +127,10 @@
                 Lorem ipsum dolor sit amet. In culpa voluptas et quae dolorem aut aliquam enim eum aliquid doloremque et ipsum optio et consequatur eveniet sit libero modi! Et exercitationem architecto est harum optio quo voluptas eligendi ex blanditiis aspernatur.
             </p>
         </div>
-        <div class="px-6 py-4">
-            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">Food</span>
-            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">Bars</span>
-            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700">Events</span>
+        <div class="px-6 py-4 flex">
+            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">difrrent artist 1</span>
+            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">difrrent artist 1</span>
+            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700">difrrent artist 1</span>
         </div>
     </div>
 </div>
@@ -138,10 +150,10 @@
                 Lorem ipsum dolor sit amet. In culpa voluptas et quae dolorem aut aliquam enim eum aliquid doloremque et ipsum optio et consequatur eveniet sit libero modi! Et exercitationem architecto est harum optio quo voluptas eligendi ex blanditiis aspernatur.
             </p>
         </div>
-        <div class="px-6 py-4">
-            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">Food</span>
-            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">Bars</span>
-            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700">Events</span>
+        <div class="px-6 py-4 flex">
+            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">difrrent artist 1</span>
+            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">difrrent artist 1</span>
+            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700">difrrent artist 1</span>
         </div>
     </div>
 </div>
@@ -160,52 +172,84 @@
                 Lorem ipsum dolor sit amet. In culpa voluptas et quae dolorem aut aliquam enim eum aliquid doloremque et ipsum optio et consequatur eveniet sit libero modi! Et exercitationem architecto est harum optio quo voluptas eligendi ex blanditiis aspernatur.
             </p>
         </div>
-        <div class="px-6 py-4">
-            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">Food</span>
-            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">Bars</span>
-            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700">Events</span>
+        <div class="px-6 py-4 flex">
+            <span  class=" bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">difrrent artist 1</span>
+            <span  class="bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">difrrent artist 1</span>
+            <span  class="bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700">difrrent artist 1</span>
         </div>
     </div>
 </div>
 
 <script>
-    function toggleDropdown() {
-        document.getElementById("myDropdown").classList.toggle("show");
-    }
+   
 
-    function showArtistCards() {
-        var artistCards = [
-            document.getElementById("artist1"),
-            document.getElementById("artist2"),
-            document.getElementById("artist3")
-        ];
+   function showArtistCards() {
+    var inputField = document.getElementById("searchInput");
+    var inputValue = inputField.value.trim(); // Trim leading/trailing spaces
 
-        function showNextCard(index) {
-            if (index < artistCards.length) {
-                artistCards[index].classList.remove("hidden");
-                setTimeout(function() {
-                    showNextCard(index + 1);
-                }, 500); // Delay in milliseconds between showing each card
-            }
-        }
+    if (inputValue === "") {
+        // Input field is empty, show red placeholder text and text color
 
-        showNextCard(0);
+        inputField.placeholder = "Please type a song" ;
         return false;
     }
 
-    const dropdownButton = document.getElementById('dropdownButton');
-  const dropdownPanel = document.getElementById('dropdownPanel');
-  
-  dropdownButton.addEventListener('click', () => {
-    dropdownPanel.classList.toggle('hidden');
-  });
+    var artistCards = [
+        document.getElementById("artist1"),
+        document.getElementById("artist2"),
+        document.getElementById("artist3")
+    ];
 
-  // Close the dropdown if a click occurs outside of it
-  document.addEventListener('click', (event) => {
-    if (!dropdownButton.contains(event.target) && !dropdownPanel.contains(event.target)) {
-      dropdownPanel.classList.add('hidden');
+    function showNextCard(index) {
+        if (index < artistCards.length) {
+            artistCards[index].classList.remove("hidden");
+            setTimeout(function () {
+                showNextCard(index + 1);
+            }, 500); // Delay in milliseconds between showing each card
+        }
     }
+
+    showNextCard(0);
+    return false;
+}
+
+
+
+
+
+
+
+    const dropdownButton = document.getElementById('dropdownButton');
+const dropdownPanel = document.getElementById('dropdownPanel'); // Updated to match the id of the dropdown panel
+
+dropdownButton.addEventListener('click', () => {
+  dropdownPanel.classList.toggle('hidden'); // Toggle the 'hidden' class to show/hide the dropdown
+});
+
+// Close the dropdown if a click occurs outside of it
+document.addEventListener('click', (event) => {
+  if (!dropdownButton.contains(event.target) && !dropdownPanel.contains(event.target)) {
+    dropdownPanel.classList.add('hidden');
+  }
+});
+
+// Delayed animation for dropdown items
+$('#dropdownButton').on('click', function() {
+  $('#dropdownItems a').each(function(index) {
+    const menuItem = $(this);
+    setTimeout(function() {
+      menuItem.addClass('open');
+    }, index * 100); // Adjust the delay as needed
   });
+});
+
+function updatePlaceholder(placeholderText) {
+        document.getElementById("searchInput").placeholder = "Search for " + placeholderText;
+    }
+
+
+
+
 </script>
 </body>
 </html>
