@@ -1,65 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<!--Head of the HTML document with name of page.-->
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap" rel="stylesheet">
- <link rel="stylesheet" type="text/css" href="./Assets/CSS/food.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="./Assets/CSS/food.css">
   <title>FOOD TIME!</title>
 </head>
 
+<!--body starts-->
 <body>
-
-  <header>Local Eats Near Me!
-
-    
-<div class="dropdown">
-  <button onclick="myFunction()" class="dropbtn">Menu</button>
-  <div id="myDropdown" class="dropdown-content">
-    <a href="index.html">Start Page</a>
-    <a href="home-page.html">Home</a>
-    <a href="localMusic.html">Local Music</a>
-    <a href="viewpoints.html">Attractions</a>
-  </div>
-</div>
+  <!--header text that people will see-->
+  <!--header includes dropdown menu that moves user to other parts of the website-->
+  <header>Local Eats Near Me!  
+    <div class="dropdown">
+      <button onclick="myFunction()" class="dropbtn">Menu</button>
+        <div id="myDropdown" class="dropdown-content">
+        <a href="index.html">Start Page</a>
+        <a href="home-page.html">Home</a>
+        <a href="localMusic.html">Local Music</a>
+        <a href="viewpoints.html">Attractions</a>
+        </div>
+    </div>
   </header>
 
-  <section id="groupGathering"><img src="./Assets/Images/wepik-export-20230830045059ztgt.png" alt="Picture of HulaPie From dukes restaurants.">
-  <p>Indulge in the tantalizing flavors of your own neighborhood and discover the hidden gem right around the corner! 
-    At your local eatery, you're not just savoring food; you're savoring a piece of the community. With every bite, you'll experience the authentic taste of locally sourced ingredients prepared with passion and care. 
-    From the rich aromas that greet you at the door to the friendly faces behind the counter, dining locally is an invitation to connect, to support the artisans and chefs who pour their heart and soul into every dish. 
-    Join us for a culinary journey that celebrates the unique character of our town, where each meal is a celebration of community, tradition, and the love of good food. 
-    Come hungry, leave satisfied, and carry a piece of your neighborhood with you in every bite.</p>
+  <!--Section is for the group image and message of finding local eats near the user -->
+  <section id="groupGathering"><img src="./Assets/Images/wepik-export-20230830045059ztgt.png" alt="Picture of friends haveing fun at a resturant.">
+    <p>Indulge in the tantalizing flavors of your own neighborhood and discover the hidden gem right around the corner! 
+       At your local eatery, you're not just savoring food; you're savoring a piece of the community. With every bite, you'll experience the authentic taste of locally sourced ingredients prepared with passion and care. 
+       From the rich aromas that greet you at the door to the friendly faces behind the counter, dining locally is an invitation to connect, to support the artisans and chefs who pour their heart and soul into every dish. 
+       Join us for a culinary journey that celebrates the unique character of our town, where each meal is a celebration of community, tradition, and the love of good food. 
+       Come hungry, leave satisfied, and carry a piece of your neighborhood with you in every bite.</p>
   </section>
 
-  <aside id="listLocalEats">
-  <button id="button">HIT ME WITH THAT LOCAL STUFF!</button>
-  <section id="Image"><img src="https://www.dukesrestaurants.com/wp-content/uploads/2018/05/Duke.HulaPie.jpg" alt="Picture of HulaPie From dukes restaurants.">
-  </aside>
+  <!--div is for the button that will activate the map by using previous lat and lng from the start page-->
+  <div id="listLocalEats">
+    <button id="button">HIT ME WITH THAT LOCAL STUFF!</button>
+    <section id="Image"><img src="https://www.dukesrestaurants.com/wp-content/uploads/2018/05/Duke.HulaPie.jpg" alt="Picture of HulaPie From dukes restaurants.">
+    </div> 
 
+  <!--horizontal ruling to make the map and other parts of page seperate from each other-->
   <hr>
 
+  <!--aside is used to store and put the map to the screen once the button is clicked-->
+  <aside id="map"></aside>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAsemLDXsz12-nW4Kalj3zkkjxEZLmcLB8&libraries=places&callback=initMap"></script>
 
-    <div id="map"></div>
-
-    <ul id="places"></ul>
-<!--
-<script async
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAsemLDXsz12-nW4Kalj3zkkjxEZLmcLB8&libraries=places&callback=initMap">
-</script>-->
-
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAsemLDXsz12-nW4Kalj3zkkjxEZLmcLB8&libraries=places&callback=initMap"></script>
-
-
-
-  
-  <footer>&copy Live Local Developers
-  </footer>
+  <!--footer states who did the page-->
+  <footer>&copy Live Local Developers</footer>
   <script src="./Assets/JS/food.js"></script>
 
+<!--body ends-->
 </body>
-
+<!--HTML document ends-->
 </html>
