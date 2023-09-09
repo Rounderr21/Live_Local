@@ -1,6 +1,6 @@
 let listContainer = document.getElementById('Image');
 let foodButton = document.getElementById('button');
-
+let aside = document.getElementById('map');
 
 // Attach the event listener to the foodButton
 foodButton.addEventListener('click', function () {
@@ -41,12 +41,15 @@ let map;
 let service;
 let infowindow;
 
+
 function initMap(latitude, longitude) {
   // Create the map.
   map = new google.maps.Map(document.getElementById("map"), {
     center: { lat: latitude, lng: longitude },
     zoom: 15,
   });
+
+  aside.style.display = 'block';
 
   const request = {
     location: new google.maps.LatLng(latitude, longitude),
