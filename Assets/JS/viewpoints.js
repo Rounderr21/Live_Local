@@ -37,7 +37,8 @@ let userLocation = { lat: latitude, lng: longitude };  // Example: San Francisco
 // Initializes Google Maps and searches for nearby attractions
 function initMap() {
   infowindow = new google.maps.InfoWindow();
-  map = new google.maps.Map(document.createElement("div"));
+  const mapElement = document.getElementById("map");
+  map = new google.maps.Map(mapElement, { center: userLocation, zoom: 12 });
   directionsService = new google.maps.DirectionsService();
 directionsRenderer = new google.maps.DirectionsRenderer();
 directionsRenderer.setMap(map);
