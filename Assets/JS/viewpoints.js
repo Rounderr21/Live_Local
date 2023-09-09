@@ -29,7 +29,10 @@ let imageUrls2 = [];
 let imageDescriptions2 = [];
 
 // Replace these coordinates with the user's coordinates
-let userLocation = { lat: 37.7749, lng: -122.4194 };  // Example: San Francisco
+
+const latitude = JSON.parse(localStorage.getItem('latitude'));
+const longitude = JSON.parse(localStorage.getItem('longitude'));
+let userLocation = { lat: latitude, lng: longitude };  // Example: San Francisco
 
 // Initializes Google Maps and searches for nearby attractions
 function initMap() {
