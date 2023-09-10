@@ -9,6 +9,8 @@ locateBtn.addEventListener('click', function() {
     navigator.geolocation.getCurrentPosition(function(position) {
       latC = parseFloat(position.coords.latitude);
       lonC = parseFloat(position.coords.longitude);
+      JSON.stringify(localStorage.setItem('latitude', latC));
+      JSON.stringify(localStorage.setItem('longitude', lonC));
       console.log(latC, lonC);
 
       // Now that you have the location, you can redirect to the next page.
