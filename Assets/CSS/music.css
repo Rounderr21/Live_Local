@@ -1,3 +1,27 @@
+:root{
+    --cornflower: #151B25;
+    --navyblue: #034687;
+    --babyblue: #DBE8E1;
+    --red: #E10032;
+}
+
+header{
+    
+    font-family: 'Major Mono Display', monospace;
+    background: linear-gradient(45deg, #034687,#DBE8E1,#034687);
+    color: var(--cornflower);
+    width: 100%;
+    text-align: center;
+}
+
+section{
+    background-color: var(--babyblue);
+}
+
+#artistBlocks{
+
+    height: 650px
+}
 
 @import url('https://fonts.googleapis.com/css2?family=Major+Mono+Display&family=Tektur&display=swap');
 body{
@@ -74,4 +98,18 @@ body{
     z-index: 1; /* Place content on top of the iframe */
     background-color: rgba(255, 255, 255, 0.7); /* Add a semi-transparent background */
     padding: 20px;
+}
+
+footer{
+    font-family: 'Major Mono Display', monospace;
+    display: flex;
+    font-size: 25px;
+    width: 100%;
+    height: 100px;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--navyblue);
+    color: var(--cornflower);
+    background: linear-gradient(to right, #DBE8E1,#034687,#DBE8E1);
+
 }
