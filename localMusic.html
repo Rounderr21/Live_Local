@@ -6,84 +6,7 @@
     <title>Find New Music</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Major+Mono+Display&family=Tektur&display=swap');
-        body{
-            font-family: 'Major Mono Display', monospace;
-            background-color: lightgray;
-        }
-        /* Styles for the dropdown */
-        .dropdown {
-            display: inline-block;
-        }
-
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            background-color: #6e13af;
-            min-width: 160px;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-            z-index: 1;
-        }
-        /* WRONGLY NAMED NOT DROPDOWN CONTENT KEEP KEEP*/
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-
-        /* Additional styles for the buttons */
-        .menu-button {
-            text-align: center;
-            background-color: #034687;
-            color: #DBE8E1;
-            font-size: 1.35rem; /* Increase font-size by 5% */
-            padding: 0.5rem 1rem;
-            border-radius: 0.375rem;
-            cursor: pointer;
-            transition: background-color 0.3s ease, color 0.3s ease;
-            width: 12%;
-            height: 3%;
-        }
-
-        .menu-button:hover {
-            background-color: rgb(55, 101, 228);
-        }
-
-        #dropdownItems a {
-          opacity: 0;
-         transition: opacity 0.5s; /* Control the transition duration here */
-        }
-
-/* Add a class to trigger the transition */
-        #dropdownItems.open a {
-            opacity: 1;
-        }
-
-          .iframe-container {
-            position: relative;
-            width: 480px; /* Set the desired width */
-            height: 270px; /* Set the desired height */
-        }
-
-        /* Style for the iframe */
-        .iframe-background {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none; /* Allows interaction with content on top */
-        }
-
-        /* Additional styles for content on top of the iframe */
-        .content-on-top {
-            position: relative;
-            z-index: 1; /* Place content on top of the iframe */
-            background-color: rgba(255, 255, 255, 0.7); /* Add a semi-transparent background */
-            padding: 20px;
-        }
-    </style>
+    <link rel="stylesheet" href="./Assets/CSS/music.css">
 </head>
 
 <body class="bg-gray-100">
@@ -106,7 +29,7 @@
         <!-- Dropdown panel, hidden by default -->
         <div class="origin-top-right absolute right-0 mt-2 w-full rounded-md shadow-lg bg-blue-900 ring-1 ring-black ring-opacity-5 hidden" id="dropdownPanel">
             <div class="py-1" role="menu" aria-orientation="vertical" aria-labelledby="dropdownButton" >
-                <a href="start.html"  id="dropdownItems" class="block bg-blue-900 px-4 py-2 text-1xL text-white-700 hover:bg-blue-800 hover:text-white" role="menuitem">Start Page</a>
+                <a href="index.html"  id="dropdownItems" class="block bg-blue-900 px-4 py-2 text-1xL text-white-700 hover:bg-blue-800 hover:text-white" role="menuitem">Start Page</a>
                 <a href="home-page.html"  id="dropdownItems" class="block bg-blue-900 px-4 py-2 text-1xL text-white-700 hover:bg-blue-800 hover:text-white" role="menuitem">Home page</a>
                 <a href="food.html" id="dropdownItems" class="block px-4 py-2 text-1xL text-white-700 hover:bg-blue-800 hover:text-white" role="menuitem">Food</a>
                 <a href="viewpoints.html" id="dropdownItems" class="block px-4 py-2 text-1xL text-white-700 hover:bg-blue-800 hover:text-white" role="menuitem">Viewpoints</a>
@@ -115,10 +38,10 @@
     </div>
 
 
-    <button class="menu-button mr-10" onclick="updatePlaceholder('Hip hop')" style="color: #DBE8E1;">hip Hop</button>
-    <button class="menu-button mr-10" onclick="updatePlaceholder('RNB')" style="color: #DBE8E1;">RNB</button>
-    <button class="menu-button ml-4" onclick="updatePlaceholder('Country')" style="color: #DBE8E1;">Country</button>
-    <button class="menu-button ml-4" onclick="updatePlaceholder('EDM')" style="color: #DBE8E1;">EDM</button>
+    <button id="musicButton1" class="menu-button mr-10" onclick="updatePlaceholder('Hip hop')" style="color: #DBE8E1;">hip Hop</button>
+    <button id="musicButton2" class="menu-button mr-10" onclick="updatePlaceholder('RNB')" style="color: #DBE8E1;">RNB</button>
+    <button id="musicButton3" class="menu-button ml-4" onclick="updatePlaceholder('Country')" style="color: #DBE8E1;">Country</button>
+    <button id="musicButton4" class="menu-button ml-4" onclick="updatePlaceholder('EDM')" style="color: #DBE8E1;">EDM</button>
 </nav>
 
  <section class=" flex items-center justify-center py-8" >
@@ -142,11 +65,11 @@
     <div class="max-w-md mx-auto rounded overflow-hidden shadow-lg" style="background-color: #034687; color: #DBE8E1;">
         <div id="resultsContainer" class="flex justify-center space-x-4"></div>
         <div class="px-6 py-4">
-            <div class="font-bold text-xl mb-2">Recommended Songs</div>
+            <div class="font-bold text-xl mb-2">Recommended Artist 1</div>
             <!-- Add a placeholder for displaying the artist name -->
             <div id="artistNamePlaceholder" class="text-white-700 text-base"></div>
             <!-- Add a div to display recommended songs -->
-            <div id="recommendedSongs" class="text-white-700 text-base"></div>
+            <div id="recommendedSongs1" class="text-white-700 text-base"></div>
         </div>
     </div>
 </div>
@@ -155,11 +78,11 @@
     <div class="max-w-md mx-auto rounded overflow-hidden shadow-lg" style="background-color: #034687; color: #DBE8E1;">
         <div id="resultsContainer" class="flex justify-center space-x-4"></div>
         <div class="px-6 py-4">
-            <div class="font-bold text-xl mb-2 ">Recommended Artist</div>
+            <div class="font-bold text-xl mb-2 ">Recommended Artist 2</div>
             <!-- Add a placeholder for displaying the artist name -->
             <div id="artistNamePlaceholder" class="text-white-700 text-base"></div>
             <!-- Add a div to display recommended songs -->
-            <div id="recommendedSongs" class="text-white-700 text-base"></div>
+            <div id="recommendedSongs2" class="text-white-700 text-base"></div>
         </div>
     </div>
 </div>
@@ -168,143 +91,16 @@
     <div class="max-w-md mx-auto rounded overflow-hidden shadow-lg" style="background-color: #034687; color: #DBE8E1;">
         <div id="resultsContainer" class="flex justify-center space-x-4"></div>
         <div class="px-6 py-4">
-            <div class="font-bold text-xl mb-2">Artist Details</div>
+            <div class="font-bold text-xl mb-2">Recommended Artist 3</div>
             <!-- Add a placeholder for displaying the artist name -->
             <div id="artistNamePlaceholder" class="text-white-700 text-base"></div>
             <!-- Add a div to display recommended songs -->
-            <div id="recommendedSongs" class="text-white-700 text-base"></div>
+            <div id="recommendedSongs3" class="text-white-700 text-base"></div>
         </div>
     </div>
 </div>
 </section>
-
-<script>
-   
-   function fetchRecommendations(inputValue) {
-        // Check if inputValue is empty
-        if (!inputValue) {
-            $('#recommendedSongs').html('<p>Please type a song.</p>');
-            return;
-        }
-
-        // Construct the URL for the recommendations API
-        const recommendationsApiUrl = `https://shazam.p.rapidapi.com/songs/list-recommendations?key=484129036&locale=en-US&query=${encodeURIComponent(inputValue)}`;
-
-        const settingsRecommendations = {
-            async: true,
-            crossDomain: true,
-            method: 'GET',
-            headers: {
-                'X-RapidAPI-Key': 'b821e2c83amsh122400748d1a0cfp149f7djsnd9f32b4fe43c',
-                'X-RapidAPI-Host': 'shazam.p.rapidapi.com'
-            },
-            url: recommendationsApiUrl
-        };
-
-        // Keep track of unique artists
-        const uniqueArtists = new Set();
-        let artistsCount = 0;
-
-        $.ajax(settingsRecommendations).done(function (recommendationsResponse) {
-            console.log(recommendationsResponse);
-
-            // Display recommendations details in the artist card
-            if (recommendationsResponse && recommendationsResponse.tracks && recommendationsResponse.tracks.length > 0) {
-                // Clear previous recommendations
-                $('#recommendedSongs').empty();
-
-                // Keep track of the number of recommendations added
-                let artistsCount = 0;
-
-                // Iterate through the recommendations and display each one, but limit it to the first 3
-                for (let i = 0; i < recommendationsResponse.tracks.length; i++) {
-                    const recommendation = recommendationsResponse.tracks[i];
-                    const recommendationTitle = recommendation.title;
-                    const recommendationArtist = recommendation.subtitle;
-
-                    // Check if the artist is not a duplicate
-                    if (!uniqueArtists.has(recommendationArtist)) {
-                        uniqueArtists.add(recommendationArtist);
-                        artistsCount++;
-
-                        // Append each recommendation to the "recommendedSongs" div
-                        $('#recommendedSongs').append(`
-                            <div class="recommended-song">
-                                <p>Recommended Song ${artistsCount}:</p>
-                                <p>Title: ${recommendationTitle}</p>
-                                <p>Artist: ${recommendationArtist}</p>
-                            </div>
-                        `);
-
-                        // Stop adding recommendations after 3 unique artists
-                        if (artistsCount === 3) {
-                            break;
-                        }
-                    }
-                }
-            } else {
-                // Display a message if no recommendations are available
-                $('#recommendedSongs').html('<p>No recommendations available.</p>');
-            }
-
-            // Show all artist cards
-            $('#artist1, #artist2, #artist3').removeClass('hidden');
-        }).fail(function (error) {
-            // Handle AJAX request errors for recommendations
-            console.error('Error fetching recommendations:', error);
-            $('#recommendedSongs').html('<p>Unable to fetch recommendations.</p>');
-            // Show all artist cards even if recommendations fail
-            $('#artist1, #artist2, #artist3').removeClass('hidden');
-        });
-    }
-
-    // Function to show artist cards and fetch recommendations
-    function showArtistCards() {
-        var inputField = document.getElementById("searchInput");
-        var inputValue = inputField.value.trim();
-
-        if (inputValue === "") {
-            inputField.placeholder = "Please type a song";
-            return false;
-        }
-
-        // Call the function to fetch recommendations based on user input
-        fetchRecommendations(inputValue);
-
-        // Prevent the form from submitting the traditional way
-        return false;
-    }
-
-
-    const dropdownButton = document.getElementById('dropdownButton');
-const dropdownPanel = document.getElementById('dropdownPanel'); // Updated to match the id of the dropdown panel
-
-dropdownButton.addEventListener('click', () => {
-  dropdownPanel.classList.toggle('hidden'); // Toggle the 'hidden' class to show/hide the dropdown
-});
-
-// Close the dropdown if a click occurs outside of it
-document.addEventListener('click', (event) => {
-  if (!dropdownButton.contains(event.target) && !dropdownPanel.contains(event.target)) {
-    dropdownPanel.classList.add('hidden');
-  }
-});
-
-// Delayed animation for dropdown items
-$('#dropdownButton').on('click', function() {
-  $('#dropdownItems a').each(function(index) {
-    const menuItem = $(this);
-    setTimeout(function() {
-      menuItem.addClass('open');
-    }, index * 100); // Adjust the delay as needed
-  });
-});
-
-function updatePlaceholder(placeholderText) {
-        document.getElementById("searchInput").placeholder = "Search for " + placeholderText;
-    }
-
-</script>
+<script src="./Assets/JS/music.js"></script>
+    
 </body>
 </html>
-

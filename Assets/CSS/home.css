@@ -109,3 +109,8 @@ footer {
     color: var(--navyblue);
     font-size: 14px;
 }
+
+#foot{
+    font-size: 25px;
+    font-family: 'Major Mono Display', monospace;
+}
