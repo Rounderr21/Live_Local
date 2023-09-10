@@ -1,5 +1,29 @@
 let artistone = document.getElementById('artist1');
 
+
+document.getElementById('musicButton1').addEventListener('click', function() {
+    fetchRecommendations('hip-hop'); // Pass 'hip-hop' as the genre to filter by
+});
+
+function fetchRecommendations(genre) {
+    // Check if genre is empty
+    if (!genre) {
+        $('#recommendedSongs').html('<p>hip-hop</p>');
+        return;
+    }}
+
+    document.getElementById('musicButton2').addEventListener('click', function() {
+        fetchRecommendations('rnb'); // Pass 'rnb' as the genre to filter by
+    });
+
+    document.getElementById('musicButton3').addEventListener('click', function() {
+        fetchRecommendations('country'); // Pass 'country' as the genre to filter by
+    });
+
+    document.getElementById('musicButton3').addEventListener('click', function() {
+        fetchRecommendations('edm'); // Pass 'edm' as the genre to filter by
+    });
+
 // Function to shuffle an array using Fisher-Yates shuffle algorithm
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
