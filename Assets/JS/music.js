@@ -1,5 +1,13 @@
 let artistone = document.getElementById('artist1');
 
+// Function to shuffle an array using Fisher-Yates shuffle algorithm
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+}
+
 function fetchRecommendations(inputValue) {
     // Check if inputValue is empty
     if (!inputValue) {
@@ -25,19 +33,21 @@ function fetchRecommendations(inputValue) {
     const uniqueArtists = new Set();
     let artistsCount = 0;
 
+    $('#recommendedSongs1, #recommendedSongs2, #recommendedSongs3').empty();
+    uniqueArtists.clear();
+
     $.ajax(settingsRecommendations).done(function (recommendationsResponse) {
         console.log(recommendationsResponse);
-       
 
         // Display recommendations details in the artist card
         if (recommendationsResponse && recommendationsResponse.tracks && recommendationsResponse.tracks.length > 0) {
-            // Clear previous recommendations
-            $('#recommendedSongs').empty();
+            // Shuffle the recommendations
+            shuffleArray(recommendationsResponse.tracks);
 
             // Keep track of the number of recommendations added
             let artistsCount = 0;
 
-            // Iterate through the recommendations and display each one, but limit it to the first 3
+            // Iterate through the shuffled recommendations and display each one, but limit it to the first 3 unique artists
             for (let i = 0; i < recommendationsResponse.tracks.length; i++) {
                 const recommendation = recommendationsResponse.tracks[i];
                 const recommendationTitle = recommendation.title;
@@ -48,32 +58,13 @@ function fetchRecommendations(inputValue) {
                     uniqueArtists.add(recommendationArtist);
                     artistsCount++;
 
-                    //this logs the song///////////////////////////////////
-                    console.log(recommendationTitle);
-                    //this logs the artist/////////////////////////////
-                    console.log(recommendationArtist);
-
-                    // Append each recommendation to the "recommendedSongs" div
-                    $('#recommendedSongs1').append(`
+                    // Append each recommendation to the appropriate "recommendedSongs" div
+                    $(`#recommendedSongs${artistsCount}`).append(`
                         <div class="recommended-song">
                             <p>Artist: ${recommendationArtist}</p>
                             <p>Title: ${recommendationTitle}</p>
                         </div>
                     `);
-
-                    $('#recommendedSongs2').append(`
-                    <div class="recommended-song">
-                        <p>Artist: ${recommendationArtist}</p>
-                        <p>Title: ${recommendationTitle}</p>
-                    </div>
-                `);
-
-                $('#recommendedSongs3').append(`
-                <div class="recommended-song">
-                    <p>Artist: ${recommendationArtist}</p>
-                    <p>Title: ${recommendationTitle}</p>
-                </div>
-            `);
 
                     // Stop adding recommendations after 3 unique artists
                     if (artistsCount === 3) {
@@ -109,7 +100,6 @@ function showArtistCards() {
 
     // Call the function to fetch recommendations based on user input
     fetchRecommendations(inputValue);
-    
 
     // Prevent the form from submitting the traditional way
     return false;
