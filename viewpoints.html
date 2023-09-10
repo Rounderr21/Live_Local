@@ -1,39 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Points of Interest</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap" rel="stylesheet">
-  <style>
-    
-    body, h1, h2, h3, h4, h5, h6, p, a, button, input, textarea {
-      font-family: 'Major Mono Display', monospace;
-    }
-    /* For specific color codes */
-    .bg-cornflowerblue {
-      background-color: #151B25;
-    }
-    .bg-navblue {
-      background-color: #034687;
-    }
-    
-    .modal-overlay {
-      pointer-events: none;
-    }
-    .modal-content {
-      pointer-events: auto;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <title>Points of Interest</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap" rel="stylesheet">
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAsemLDXsz12-nW4Kalj3zkkjxEZLmcLB8&libraries=places&callback=initMap" async defer></script>
+
+
+    <style>
+        body, h1, h2, h3, h4, h5, h6, p, a, button, input, textarea {
+            font-family: 'Major Mono Display', monospace;
+        }
+
+        .bg-deepnavy {
+    background-color: #151B25;
+}
+        .bg-navblue {
+            background-color: #034687;
+        }
+
+        .modal-overlay {
+            pointer-events: none;
+        }
+
+        .modal-content {
+            pointer-events: auto;
+        }
+    </style>
 </head>
 <body style="background-color: #DBE8E1;" class="flex flex-col items-center justify-center">
-<header class="bg-cornflowerblue text-white w-full py-4">
+  <header class="bg-deepnavy text-white w-full py-4">
   <div class="container mx-auto">
     <h1 class="text-center text-3xl">View Local</h1>
     <nav class="flex justify-center mt-4">
       <ul class="flex justify-center space-x-4">
         <li class="bg-navblue p-2 mx-2 rounded">
-          <a href="start.html" class="text-white w-full h-full block text-center">Start Page</a>
+          <a href="index.html" class="text-white w-full h-full block text-center">Start Page</a>
         </li>
         <li class="bg-navblue p-2 mx-2 rounded">
           <a href="home-page.html" class="text-white w-full h-full block text-center">Home</a>
@@ -52,16 +55,13 @@
   <!-- Modal might need to be changed based off criteria-->
   <div id="modal" class="modal-overlay fixed inset-0 flex items-center justify-center z-50">
     <div class="modal-content text-white p-8 rounded-lg shadow-md w-1/2" style="background-color: #151B25;">
-      <h1 class="text-2xl mb-4">Enter your location</h1>
-      <p class="mb-4">Unlock the city's best kept-secrets and attractions.</p>
-      <form id="location-form">
-        <input type="text" id="zipcode" placeholder="Zip Code" class="p-2 mb-4 border rounded text-black">
-        <input type="text" id="city-state" placeholder="City, State" class="p-2 mb-4 border rounded text-black">        
-        <button type="submit" style="background-color: #E10032;" class="p-2 text-white rounded">Submit</button>
-      </form>
+    
+        <p class="mb-4">Unlock the city's best kept-secrets and attractions.</p>
+        <form id="location-form">
+            <button type="submit" style="background-color: #E10032;" class="p-2 text-white rounded">Take Me There!</button>
+        </form>
     </div>
-  </div>
-
+</div>
   <!-- Container for Background Image and Carousels -->
   <div id="background-container" class="flex flex-col items-center justify-center w-full bg-cover bg-center top-0 h-screen z-10"
     style="background-image: url('https://windows10spotlight.com/wp-content/uploads/2017/09/6ecabd4f2e54ff0c8956afc003e531e7.jpg');">
@@ -71,7 +71,7 @@
       
       <!-- First Carousel -->
       <div id="carousel" class="hidden flex flex-col items-center justify-center bg-white rounded-lg shadow-lg p-8 w-3/4 max-w-2xl">
-        <h2 class="text-2xl mb-4">Name to be autofilled for attractions.</h2>
+        <h2 class="text-2xl mb-4">Attractions & Viewpoints</h2>
         <div class="flex flex-row justify-between items-center w-full">
           <button id="prev" style="background-color: #151B25;" class="text-white p-4 rounded">Prev</button>
           <div id="point-of-interest" class="w-full p-4">
@@ -85,7 +85,7 @@
 
       <!-- Second Carousel -->
       <div id="carousel2" class="hidden flex flex-col items-center justify-center bg-white rounded-lg shadow-lg p-8 w-3/4 max-w-2xl">
-        <h2 class="text-2xl mb-4">Name to be autofilled for viewpoints.</h2>
+        <h2 class="text-2xl mb-4">Attractions & Viewpoints</h2>
         <div class="flex flex-row justify-between items-center w-full">
           <button id="prev2" style="background-color: #151B25;" class="text-white p-4 rounded">Prev</button>
           <div id="point-of-interest2" class="w-full p-4">
@@ -103,7 +103,9 @@
   <!-- Directions Section -->
   <div id="directions-section" class="hidden w-full mt-16 z-30">
     <h1 class="text-3xl text-center mb-4">Directions</h1>
-    <img src="assets/images/DSC09685-HDR (1).jpg" alt="Placeholder for Google Maps" class="w-full h-auto mb-4 rounded">
+    <div id="map" style="width: 100%; height: 400px;"></div>
+
+
     <p class="text-center">
       This is where you can include directions from Google Maps. Feel free to replace the placeholder image with whatever you need.
     </p>
