@@ -20,9 +20,6 @@ function fetchRecommendations(genre) {
         fetchRecommendations('country'); // Pass 'country' as the genre to filter by
     });
 
-    document.getElementById('musicButton3').addEventListener('click', function() {
-        fetchRecommendations('edm'); // Pass 'edm' as the genre to filter by
-    });
 
 // Function to shuffle an array using Fisher-Yates shuffle algorithm
 function shuffleArray(array) {
