@@ -12,38 +12,37 @@
 <body class="bg-gray-100">
 
 <header>
-    <h1 class="text-6xl font-bold  mr-20 text-center" style="color: #151B25;">Find your next favorite song!</h1>
-</header>
+        <h1 class="text-6xl font-bold  mr-20 text-center" style="color: #151B25;">Find your next favorite song!</h1>
 
-<nav class="flex justify-between p-8">
+    <nav class="flex justify-between p-8">
    
-    <div class="relative inline-block text-left">
-        <button style="background-color: #034687; color: white;" type="button" class="inline-flex justify-center w-full px-4 py-2 text-2xl font-medium text-white-700 border border-gray-300 rounded-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500" id="dropdownButton" aria-haspopup="true" aria-expanded="true">
-            Start Page
-            <!-- Heroicon name: solid/chevron-down -->
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 ml-2 -mr-1" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                <path fill-rule="evenodd" d="M10 3a.75.75 0 01.53.22l4.25 4.25a.75.75 0 11-1.06 1.06L10 4.81 6.28 8.53a.75.75 0 11-1.06-1.06l4.25-4.25a.75.75 0 01.53-.22z" clip-rule="evenodd" />
-            </svg>
-        </button>
+        <div class="relative inline-block text-left">
+            <button style="background-color: #034687; color: white;" type="button" class="inline-flex justify-center w-full px-4 py-2 text-2xl font-medium text-white-700 border border-gray-300 rounded-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500" id="dropdownButton" aria-haspopup="true" aria-expanded="true">
+                Start Page
+                <!-- Heroicon name: solid/chevron-down -->
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 ml-2 -mr-1" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M10 3a.75.75 0 01.53.22l4.25 4.25a.75.75 0 11-1.06 1.06L10 4.81 6.28 8.53a.75.75 0 11-1.06-1.06l4.25-4.25a.75.75 0 01.53-.22z" clip-rule="evenodd" />
+                </svg>
+            </button>
     
-        <!-- Dropdown panel, hidden by default -->
-        <div class="origin-top-right absolute right-0 mt-2 w-full rounded-md shadow-lg bg-blue-900 ring-1 ring-black ring-opacity-5 hidden" id="dropdownPanel">
-            <div class="py-1" role="menu" aria-orientation="vertical" aria-labelledby="dropdownButton" >
-                <a href="index.html"  id="dropdownItems" class="block bg-blue-900 px-4 py-2 text-1xL text-white-700 hover:bg-blue-800 hover:text-white" role="menuitem">Start Page</a>
-                <a href="home-page.html"  id="dropdownItems" class="block bg-blue-900 px-4 py-2 text-1xL text-white-700 hover:bg-blue-800 hover:text-white" role="menuitem">Home page</a>
-                <a href="food.html" id="dropdownItems" class="block px-4 py-2 text-1xL text-white-700 hover:bg-blue-800 hover:text-white" role="menuitem">Food</a>
-                <a href="viewpoints.html" id="dropdownItems" class="block px-4 py-2 text-1xL text-white-700 hover:bg-blue-800 hover:text-white" role="menuitem">Viewpoints</a>
+            <!-- Dropdown panel, hidden by default -->
+            <div class="origin-top-right absolute right-0 mt-2 w-full rounded-md shadow-lg bg-red-900 ring-1 ring-black ring-opacity-5 hidden" id="dropdownPanel">
+                <div class="py-1" role="menu" aria-orientation="vertical" aria-labelledby="dropdownButton" >
+                    <a href="index.html"  id="dropdownItems" class="block bg-red-900 px-4 py-2 text-1xL text-white-700 hover:bg-blue-800 hover:text-black" role="menuitem">Start Page</a>
+                    <a href="home-page.html"  id="dropdownItems" class="block bg-red-900 px-4 py-2 text-1xL text-white-700 hover:bg-blue-800 hover:text-black" role="menuitem">Home page</a>
+                    <a href="food.html" id="dropdownItems" class="block px-4 py-2 text-1xL text-white-700 hover:bg-blue-800 hover:text-black" role="menuitem">Food</a>
+                    <a href="viewpoints.html" id="dropdownItems" class="block px-4 py-2 text-1xL text-white-700 hover:bg-blue-800 hover:text-black" role="menuitem">Viewpoints</a>
+                </div>
             </div>
         </div>
-    </div>
 
 
-    <button class="menu-button mr-10" onclick="updatePlaceholder('Hip hop')" style="color: #DBE8E1;">hip Hop</button>
-    <button class="menu-button mr-10" onclick="updatePlaceholder('RNB')" style="color: #DBE8E1;">RNB</button>
-    <button class="menu-button ml-4" onclick="updatePlaceholder('Country')" style="color: #DBE8E1;">Country</button>
-    <button class="menu-button ml-4" onclick="updatePlaceholder('EDM')" style="color: #DBE8E1;">EDM</button>
-</nav>
-
+        <button class="menu-button mr-10" onclick="updatePlaceholder('Hip hop')" style="background-color: #E10032; color: #151B25;" >Hip Hop</button>
+        <button class="menu-button mr-10" onclick="updatePlaceholder('RNB')" style="background-color: #E10032; color: #151B25">RNB</button>
+        <button class="menu-button ml-4" onclick="updatePlaceholder('Country')" style="background-color: #E10032; color: #151B25">Country</button>
+        <button class="menu-button ml-4" onclick="updatePlaceholder('EDM')" style="background-color: #E10032; color: #151B25">EDM</button>
+    </nav>
+</header>
  <section class=" flex items-center justify-center py-8" >
     <main class="w-full max-w-md  p-8 rounded shadow" style="background-color: #034687;">
         <section>
@@ -60,8 +59,8 @@
     </main>
 </section>
 
-<section class="flex justify-between ">
-<div id="artist1" class="max-w-md bg-white rounded overflow-hidden shadow-lg artist1 hidden artist-card">
+<section id="artistBlocks" class="flex justify-evenly" style="margin: 100px; align-items: center; border-radius: 25px;">
+<div id="artist1" class="max-w-md rounded overflow-hidden artist1 hidden artist-card">
     <div class="max-w-md mx-auto rounded overflow-hidden shadow-lg" style="background-color: #034687; color: #DBE8E1;">
         <div id="resultsContainer" class="flex justify-center space-x-4"></div>
         <div class="px-6 py-4">
@@ -74,7 +73,7 @@
     </div>
 </div>
 
-<div id="artist2" class="max-w-md bg-white rounded overflow-hidden shadow-lg artist1 hidden artist-card">
+<div id="artist2" class="max-w-md rounded overflow-hidden artist1 hidden artist-card">
     <div class="max-w-md mx-auto rounded overflow-hidden shadow-lg" style="background-color: #034687; color: #DBE8E1;">
         <div id="resultsContainer" class="flex justify-center space-x-4"></div>
         <div class="px-6 py-4">
@@ -87,7 +86,7 @@
     </div>
 </div>
 
-<div id="artist3" class="max-w-md bg-white rounded overflow-hidden shadow-lg artist1 hidden artist-card">
+<div id="artist3" class="max-w-md rounded overflow-hidden artist1 hidden artist-card">
     <div class="max-w-md mx-auto rounded overflow-hidden shadow-lg" style="background-color: #034687; color: #DBE8E1;">
         <div id="resultsContainer" class="flex justify-center space-x-4"></div>
         <div class="px-6 py-4">
@@ -101,6 +100,6 @@
 </div>
 </section>
 <script src="./Assets/JS/music.js"></script>
-    
+<footer>&copy Live Local Developers</footer>
 </body>
 </html>
