@@ -3,12 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tailwind CSS Example</title>
+    <title>Find New Music</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Major+Mono+Display&family=Tektur&display=swap');
+        body{
+            font-family: 'Major Mono Display', monospace;
+            background-color: lightgray;
+        }
         /* Styles for the dropdown */
         .dropdown {
-            position: relative;
             display: inline-block;
         }
 
@@ -17,12 +22,12 @@
             position: absolute;
             top: 100%;
             left: 0;
-            background-color: #f9f9f9;
+            background-color: #6e13af;
             min-width: 160px;
             box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
             z-index: 1;
         }
-
+        /* WRONGLY NAMED NOT DROPDOWN CONTENT KEEP KEEP*/
         .dropdown:hover .dropdown-content {
             display: block;
         }
@@ -42,7 +47,41 @@
         }
 
         .menu-button:hover {
-            background-color: #1D4ED8;
+            background-color: rgb(55, 101, 228);
+        }
+
+        #dropdownItems a {
+          opacity: 0;
+         transition: opacity 0.5s; /* Control the transition duration here */
+        }
+
+/* Add a class to trigger the transition */
+        #dropdownItems.open a {
+            opacity: 1;
+        }
+
+          .iframe-container {
+            position: relative;
+            width: 480px; /* Set the desired width */
+            height: 270px; /* Set the desired height */
+        }
+
+        /* Style for the iframe */
+        .iframe-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none; /* Allows interaction with content on top */
+        }
+
+        /* Additional styles for content on top of the iframe */
+        .content-on-top {
+            position: relative;
+            z-index: 1; /* Place content on top of the iframe */
+            background-color: rgba(255, 255, 255, 0.7); /* Add a semi-transparent background */
+            padding: 20px;
         }
     </style>
 </head>
@@ -50,32 +89,33 @@
 <body class="bg-gray-100">
 
 <header>
-    <h1 class="text-7xl font-bold  mr-20 text-center" style="color: #151B25;">Local artist</h1>
+    <h1 class="text-6xl font-bold  mr-20 text-center" style="color: #151B25;">Find your next favorite song!</h1>
 </header>
 
 <nav class="flex justify-between p-8">
-    <button style="background-color: #034687; color: #DBE8E1;" id="dropdownDefaultButton" data-dropdown-toggle="dropdown" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">Dropdown button <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
-      </svg></button>
-    <!-- Dropdown menu -->
-    <div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
-        <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
-          <li>
-            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
-          </li>
-          <li>
-            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Settings</a>
-          </li>
-          <li>
-            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Earnings</a>
-          </li>
-          <li>
-            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Sign out</a>
-          </li>
-        </ul>
+   
+    <div class="relative inline-block text-left">
+        <button style="background-color: #034687; color: white;" type="button" class="inline-flex justify-center w-full px-4 py-2 text-2xl font-medium text-white-700 border border-gray-300 rounded-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500" id="dropdownButton" aria-haspopup="true" aria-expanded="true">
+            Start Page
+            <!-- Heroicon name: solid/chevron-down -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 ml-2 -mr-1" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M10 3a.75.75 0 01.53.22l4.25 4.25a.75.75 0 11-1.06 1.06L10 4.81 6.28 8.53a.75.75 0 11-1.06-1.06l4.25-4.25a.75.75 0 01.53-.22z" clip-rule="evenodd" />
+            </svg>
+        </button>
+    
+        <!-- Dropdown panel, hidden by default -->
+        <div class="origin-top-right absolute right-0 mt-2 w-full rounded-md shadow-lg bg-blue-900 ring-1 ring-black ring-opacity-5 hidden" id="dropdownPanel">
+            <div class="py-1" role="menu" aria-orientation="vertical" aria-labelledby="dropdownButton" >
+                <a href="start.html"  id="dropdownItems" class="block bg-blue-900 px-4 py-2 text-1xL text-white-700 hover:bg-blue-800 hover:text-white" role="menuitem">Start Page</a>
+                <a href="home-page.html"  id="dropdownItems" class="block bg-blue-900 px-4 py-2 text-1xL text-white-700 hover:bg-blue-800 hover:text-white" role="menuitem">Home page</a>
+                <a href="food.html" id="dropdownItems" class="block px-4 py-2 text-1xL text-white-700 hover:bg-blue-800 hover:text-white" role="menuitem">Food</a>
+                <a href="viewpoints.html" id="dropdownItems" class="block px-4 py-2 text-1xL text-white-700 hover:bg-blue-800 hover:text-white" role="menuitem">Viewpoints</a>
+            </div>
+        </div>
     </div>
 
-    <button class="menu-button mr-10" onclick="updatePlaceholder('Hip hop')" style="color: #DBE8E1;">Hip hop</button>
+
+    <button class="menu-button mr-10" onclick="updatePlaceholder('Hip hop')" style="color: #DBE8E1;">hip Hop</button>
     <button class="menu-button mr-10" onclick="updatePlaceholder('RNB')" style="color: #DBE8E1;">RNB</button>
     <button class="menu-button ml-4" onclick="updatePlaceholder('Country')" style="color: #DBE8E1;">Country</button>
     <button class="menu-button ml-4" onclick="updatePlaceholder('EDM')" style="color: #DBE8E1;">EDM</button>
@@ -85,11 +125,11 @@
     <main class="w-full max-w-md  p-8 rounded shadow" style="background-color: #034687;">
         <section>
             <form action="" class="space-y-4" onsubmit="return showArtistCards();">
-                <h2 class="text-2xl font-semibold text-gray-800" style="color: #151B25;">Find The Best local Music!</h2>
+                <h2 class="text-2xl font-semibold text-gray-800" style="color: #151B25;">Try New Music!</h2>
                 <section class="w-full">
                     <input style=" background-color: #DBE8E1" type="text" id="searchInput" name="name" class="mt-1 p-2 w-full border rounded" placeholder="Type your favorite song here!">
                 </section>
-                <button id="searchButton" style="background-color: #151B25; color: #DBE8E1;" type="submit" class="w-full bg-blue-500 hover:bg-blue-600 py-2 rounded" style="color: #151B25;">
+                <button onsubmit="return showArtistCards()" id="searchButton" style="background-color: #151B25; color: #DBE8E1;" type="submit" class="w-full bg-blue-500 hover:bg-blue-600 py-2 rounded" style="color: #151B25;">
                     Submit
                 </button>
             </form>
@@ -97,173 +137,174 @@
     </main>
 </section>
 
-
-<div class="flex justify-center space-x-4">
-    <div class="max-w-md bg-white rounded overflow-hidden shadow-lg artist1 hidden" id="artist1">
-        <div class="max-w-md mx-auto rounded overflow-hidden shadow-lg" style="background-color: #034687; color: #DBE8E1;">
-            <!-- <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay"
-            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/293&amp;{ ADD YOUR PARAMETERS HERE }">
-          </iframe> -->
-          <div id="resultsContainer" class="flex justify-center space-x-4"></div>
+<section class="flex justify-between ">
+<div id="artist1" class="max-w-md bg-white rounded overflow-hidden shadow-lg artist1 hidden artist-card">
+    <div class="max-w-md mx-auto rounded overflow-hidden shadow-lg" style="background-color: #034687; color: #DBE8E1;">
+        <div id="resultsContainer" class="flex justify-center space-x-4"></div>
         <div class="px-6 py-4">
-            <div class="font-bold text-xl mb-2">Artist 1</div>
-            <p style="color: #DBE8E1;" class="text-gray-700 text-base">
-                Lorem ipsum dolor sit amet. In culpa voluptas et quae dolorem aut aliquam enim eum aliquid doloremque et ipsum optio et consequatur eveniet sit libero modi! Et exercitationem architecto est harum optio quo voluptas eligendi ex blanditiis aspernatur.
-            </p>
-        </div>
-        <div class="px-6 py-4">
-            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">Food</span>
-            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">Bars</span>
-            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700">Events</span>
+            <div class="font-bold text-xl mb-2">Recommended Songs</div>
+            <!-- Add a placeholder for displaying the artist name -->
+            <div id="artistNamePlaceholder" class="text-white-700 text-base"></div>
+            <!-- Add a div to display recommended songs -->
+            <div id="recommendedSongs" class="text-white-700 text-base"></div>
         </div>
     </div>
 </div>
 
-
-
-
-    <div class="flex justify-center space-x-4">
-        <div class="max-w-md bg-white rounded overflow-hidden shadow-lg artist2 hidden" id="artist2">
-            <div class="max-w-md mx-auto rounded overflow-hidden shadow-lg" style="background-color: #034687; color: #DBE8E1;">  
-                <!-- <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay"
-                src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/293&amp;{ ADD YOUR PARAMETERS HERE }">
-              </iframe> -->
-              <div id="resultsContainer" class="flex justify-center space-x-4"></div>
-            <div class="px-6 py-4">
-                <div  class="font-bold text-xl mb-2">Artist 2</div>
-                <p style="color: #DBE8E1;" class="text-gray-700 text-base">
-                    Lorem ipsum dolor sit amet. In culpa voluptas et quae dolorem aut aliquam enim eum aliquid doloremque et ipsum optio et consequatur eveniet sit libero modi! Et exercitationem architecto est harum optio quo voluptas eligendi ex blanditiis aspernatur.
-                </p>
-            </div>
-            <div class="px-6 py-4">
-                <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">Food</span>
-                <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">Bars</span>
-                <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700">Events</span>
-            </div>
+<div id="artist2" class="max-w-md bg-white rounded overflow-hidden shadow-lg artist1 hidden artist-card">
+    <div class="max-w-md mx-auto rounded overflow-hidden shadow-lg" style="background-color: #034687; color: #DBE8E1;">
+        <div id="resultsContainer" class="flex justify-center space-x-4"></div>
+        <div class="px-6 py-4">
+            <div class="font-bold text-xl mb-2 ">Recommended Artist</div>
+            <!-- Add a placeholder for displaying the artist name -->
+            <div id="artistNamePlaceholder" class="text-white-700 text-base"></div>
+            <!-- Add a div to display recommended songs -->
+            <div id="recommendedSongs" class="text-white-700 text-base"></div>
         </div>
     </div>
+</div>
 
-    <div class="flex justify-center space-x-4">
-        <div class="max-w-md bg-white rounded overflow-hidden shadow-lg artist3 hidden" id="artist3">
-            <div class="max-w-md mx-auto rounded overflow-hidden shadow-lg" style="background-color: #034687; color: #DBE8E1;">
-                <!-- <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay"
-                src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/293&amp;{ ADD YOUR PARAMETERS HERE }">
-              </iframe> -->
-              <div id="resultsContainer" class="flex justify-center space-x-4"></div>
-            <div class="px-6 py-4">
-                <div class="font-bold text-xl mb-2">Artist 3</div>
-                <p style="color: #DBE8E1;" class="text-gray-700 text-base">
-                    Lorem ipsum dolor sit amet. In culpa voluptas et quae dolorem aut aliquam enim eum aliquid doloremque et ipsum optio et consequatur eveniet sit libero modi! Et exercitationem architecto est harum optio quo voluptas eligendi ex blanditiis aspernatur.
-                </p>
-            </div>
-            <div class="px-6 py-4">
-                <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">Food</span>
-                <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">Bars</span>
-                <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700">Events</span>
-            </div>
+<div id="artist3" class="max-w-md bg-white rounded overflow-hidden shadow-lg artist1 hidden artist-card">
+    <div class="max-w-md mx-auto rounded overflow-hidden shadow-lg" style="background-color: #034687; color: #DBE8E1;">
+        <div id="resultsContainer" class="flex justify-center space-x-4"></div>
+        <div class="px-6 py-4">
+            <div class="font-bold text-xl mb-2">Artist Details</div>
+            <!-- Add a placeholder for displaying the artist name -->
+            <div id="artistNamePlaceholder" class="text-white-700 text-base"></div>
+            <!-- Add a div to display recommended songs -->
+            <div id="recommendedSongs" class="text-white-700 text-base"></div>
         </div>
     </div>
-
-
+</div>
+</section>
 
 <script>
-    function toggleDropdown() {
-        document.getElementById("myDropdown").classList.toggle("show");
-    }
-
-    function showArtistCards() {
-        var artistCards = [
-            document.getElementById("artist1"),
-            document.getElementById("artist2"),
-            document.getElementById("artist3")
-        ];
-
-        function showNextCard(index) {
-            if (index < artistCards.length) {
-                artistCards[index].classList.remove("hidden");
-                setTimeout(function() {
-                    showNextCard(index + 1);
-                }, 500); // Delay in milliseconds between showing each card
-            }
+   
+   function fetchRecommendations(inputValue) {
+        // Check if inputValue is empty
+        if (!inputValue) {
+            $('#recommendedSongs').html('<p>Please type a song.</p>');
+            return;
         }
 
-        showNextCard(0);
+        // Construct the URL for the recommendations API
+        const recommendationsApiUrl = `https://shazam.p.rapidapi.com/songs/list-recommendations?key=484129036&locale=en-US&query=${encodeURIComponent(inputValue)}`;
+
+        const settingsRecommendations = {
+            async: true,
+            crossDomain: true,
+            method: 'GET',
+            headers: {
+                'X-RapidAPI-Key': 'b821e2c83amsh122400748d1a0cfp149f7djsnd9f32b4fe43c',
+                'X-RapidAPI-Host': 'shazam.p.rapidapi.com'
+            },
+            url: recommendationsApiUrl
+        };
+
+        // Keep track of unique artists
+        const uniqueArtists = new Set();
+        let artistsCount = 0;
+
+        $.ajax(settingsRecommendations).done(function (recommendationsResponse) {
+            console.log(recommendationsResponse);
+
+            // Display recommendations details in the artist card
+            if (recommendationsResponse && recommendationsResponse.tracks && recommendationsResponse.tracks.length > 0) {
+                // Clear previous recommendations
+                $('#recommendedSongs').empty();
+
+                // Keep track of the number of recommendations added
+                let artistsCount = 0;
+
+                // Iterate through the recommendations and display each one, but limit it to the first 3
+                for (let i = 0; i < recommendationsResponse.tracks.length; i++) {
+                    const recommendation = recommendationsResponse.tracks[i];
+                    const recommendationTitle = recommendation.title;
+                    const recommendationArtist = recommendation.subtitle;
+
+                    // Check if the artist is not a duplicate
+                    if (!uniqueArtists.has(recommendationArtist)) {
+                        uniqueArtists.add(recommendationArtist);
+                        artistsCount++;
+
+                        // Append each recommendation to the "recommendedSongs" div
+                        $('#recommendedSongs').append(`
+                            <div class="recommended-song">
+                                <p>Recommended Song ${artistsCount}:</p>
+                                <p>Title: ${recommendationTitle}</p>
+                                <p>Artist: ${recommendationArtist}</p>
+                            </div>
+                        `);
+
+                        // Stop adding recommendations after 3 unique artists
+                        if (artistsCount === 3) {
+                            break;
+                        }
+                    }
+                }
+            } else {
+                // Display a message if no recommendations are available
+                $('#recommendedSongs').html('<p>No recommendations available.</p>');
+            }
+
+            // Show all artist cards
+            $('#artist1, #artist2, #artist3').removeClass('hidden');
+        }).fail(function (error) {
+            // Handle AJAX request errors for recommendations
+            console.error('Error fetching recommendations:', error);
+            $('#recommendedSongs').html('<p>Unable to fetch recommendations.</p>');
+            // Show all artist cards even if recommendations fail
+            $('#artist1, #artist2, #artist3').removeClass('hidden');
+        });
+    }
+
+    // Function to show artist cards and fetch recommendations
+    function showArtistCards() {
+        var inputField = document.getElementById("searchInput");
+        var inputValue = inputField.value.trim();
+
+        if (inputValue === "") {
+            inputField.placeholder = "Please type a song";
+            return false;
+        }
+
+        // Call the function to fetch recommendations based on user input
+        fetchRecommendations(inputValue);
+
+        // Prevent the form from submitting the traditional way
         return false;
     }
 
-    // Close the dropdown if the user clicks outside of it
-    window.onclick = function(event) {
-        if (!event.target.matches('.dropbtn')) {
-            var dropdowns = document.getElementsByClassName("dropdown-content");
-            for (var i = 0; i < dropdowns.length; i++) {
-                var openDropdown = dropdowns[i];
-                if (!openDropdown.classList.contains('hidden')) {
-                    openDropdown.classList.add('hidden');
-                }
-            }
-        }
-    }
 
-    function updatePlaceholder(genre) {
-        var inputField = document.getElementById("name");
-        inputField.placeholder = "Type Your Favorite " + ""+genre +""+" Song!";
-    }
+    const dropdownButton = document.getElementById('dropdownButton');
+const dropdownPanel = document.getElementById('dropdownPanel'); // Updated to match the id of the dropdown panel
 
-    const clientId = 'YOUR_CLIENT_ID';
-const searchInput = document.getElementById('searchInput');
-const searchButton = document.getElementById('searchButton');
-const resultsContainer = document.getElementById('resultsContainer');
+dropdownButton.addEventListener('click', () => {
+  dropdownPanel.classList.toggle('hidden'); // Toggle the 'hidden' class to show/hide the dropdown
+});
 
-searchButton.addEventListener('click', performSearch);
+// Close the dropdown if a click occurs outside of it
+document.addEventListener('click', (event) => {
+  if (!dropdownButton.contains(event.target) && !dropdownPanel.contains(event.target)) {
+    dropdownPanel.classList.add('hidden');
+  }
+});
 
-function performSearch() {
-  const searchTerm = searchInput.value.trim();
-  if (searchTerm === '') return;
-
-  // Construct the SoundCloud API search URL
-  const apiUrl = `https://api.soundcloud.com/tracks?q=${searchTerm}&client_id=${clientId}`;
-
-  fetch(apiUrl)
-    .then(response => response.json())
-    .then(data => displayResults(data))
-    .catch(error => console.error('Error fetching data:', error));
-}
-
-function displayResults(results) {
-  resultsContainer.innerHTML = '';
-
-  results.forEach(result => {
-    const resultCard = document.createElement('div');
-    resultCard.classList.add('max-w-md', 'bg-white', 'rounded', 'overflow-hidden', 'shadow-lg', 'artist3');
-    resultCard.innerHTML = `
-      <div class="max-w-md mx-auto rounded overflow-hidden shadow-lg" style="background-color: #034687; color: #DBE8E1;">
-        <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=${result.uri}">
-        </iframe>
-        <div class="px-6 py-4">
-          <div class="font-bold text-xl mb-2">${result.title}</div>
-          <p style="color: #DBE8E1;" class="text-gray-700 text-base">
-            ${result.user.username}
-          </p>
-        </div>
-        <div class="px-6 py-4">
-          <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">Food</span>
-          <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">Bars</span>
-          <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700">Events</span>
-        </div>
-      </div>
-    `;
-    resultsContainer.appendChild(resultCard);
+// Delayed animation for dropdown items
+$('#dropdownButton').on('click', function() {
+  $('#dropdownItems a').each(function(index) {
+    const menuItem = $(this);
+    setTimeout(function() {
+      menuItem.addClass('open');
+    }, index * 100); // Adjust the delay as needed
   });
-}
+});
 
-
-
-
-
-
+function updatePlaceholder(placeholderText) {
+        document.getElementById("searchInput").placeholder = "Search for " + placeholderText;
+    }
 
 </script>
-
 </body>
-
 </html>
+
