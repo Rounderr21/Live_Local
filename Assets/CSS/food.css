@@ -114,6 +114,10 @@ button:active{
       
 }
 
+aside{
+    display: none;
+}
+
 #map {
 
     height: 700px;
