@@ -1,3 +1,5 @@
+let artistone = document.getElementById('artist1');
+
 function fetchRecommendations(inputValue) {
     // Check if inputValue is empty
     if (!inputValue) {
@@ -25,6 +27,7 @@ function fetchRecommendations(inputValue) {
 
     $.ajax(settingsRecommendations).done(function (recommendationsResponse) {
         console.log(recommendationsResponse);
+       
 
         // Display recommendations details in the artist card
         if (recommendationsResponse && recommendationsResponse.tracks && recommendationsResponse.tracks.length > 0) {
@@ -45,14 +48,32 @@ function fetchRecommendations(inputValue) {
                     uniqueArtists.add(recommendationArtist);
                     artistsCount++;
 
+                    //this logs the song///////////////////////////////////
+                    console.log(recommendationTitle);
+                    //this logs the artist/////////////////////////////
+                    console.log(recommendationArtist);
+
                     // Append each recommendation to the "recommendedSongs" div
-                    $('#recommendedSongs').append(`
+                    $('#recommendedSongs1').append(`
                         <div class="recommended-song">
-                            <p>Recommended Song ${artistsCount}:</p>
-                            <p>Title: ${recommendationTitle}</p>
                             <p>Artist: ${recommendationArtist}</p>
+                            <p>Title: ${recommendationTitle}</p>
                         </div>
                     `);
+
+                    $('#recommendedSongs2').append(`
+                    <div class="recommended-song">
+                        <p>Artist: ${recommendationArtist}</p>
+                        <p>Title: ${recommendationTitle}</p>
+                    </div>
+                `);
+
+                $('#recommendedSongs3').append(`
+                <div class="recommended-song">
+                    <p>Artist: ${recommendationArtist}</p>
+                    <p>Title: ${recommendationTitle}</p>
+                </div>
+            `);
 
                     // Stop adding recommendations after 3 unique artists
                     if (artistsCount === 3) {
@@ -88,6 +109,7 @@ function showArtistCards() {
 
     // Call the function to fetch recommendations based on user input
     fetchRecommendations(inputValue);
+    
 
     // Prevent the form from submitting the traditional way
     return false;
